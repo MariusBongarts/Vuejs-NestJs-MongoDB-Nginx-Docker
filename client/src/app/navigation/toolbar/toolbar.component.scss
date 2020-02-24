@@ -1,6 +1,8 @@
+@import './../../../variables.scss';
+
 .termino-toolbar {
   background-color: white;
-  box-shadow: 0 4px 2px -2px gray;
+  border-bottom: 1px solid #e5e7e9;
 }
 
 
@@ -10,4 +12,9 @@
     /* Make sure the toolbar will stay on top of the content as it scrolls past. */
     z-index: 2;
   }
+}
+
+mat-icon {
+  transform: scale(1.5);
+  color: $primary;
 }
