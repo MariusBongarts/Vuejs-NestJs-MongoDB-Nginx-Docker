@@ -1,7 +1,8 @@
-@import 'styles.scss';
-
+@import "theme.scss";
 
 // Create your Sass color vars (will be available in all the project)
 $primary: mat-color($app-primary);
 $accent: mat-color($app-accent);
 $warn: mat-color($app-warn);
+
+$app-primary-gradient: linear-gradient(90deg, mat-color($app-primary) 0%,  darken(mat-color($app-primary), 20%) 50%, darken(mat-color($app-primary), 30%) 100%);
