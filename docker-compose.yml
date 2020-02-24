@@ -1,0 +1,41 @@
+version: '3.6'
+services:
+
+  client:
+    build:
+      context: ./client
+    environment:
+      FRONTEND_PORT: 4200
+      API_HOST: 'http://localhost:4200'
+    ports:
+      - 4200:4200
+    volumes:
+      - ./client/src:/app/src/
+    # links:
+    #   - server
+
+
+  # server:
+  #   build:
+  #     context: ./server/
+  #   expose:
+  #     - 3000
+  #   environment:
+  #     API_HOST: 'http://localhost:3000'
+  #     APP_SERVER_PORT: 3000
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - ./server/src:/srv/app/server/src
+  #   command: npm start
+  #   depends_on:
+  #     - mongo
+
+  # mongo:
+  #   image: mongo:latest
+  #   container_name: 'mongodb'
+  #   volumes:
+  #     - /data:/data
+  #   ports:
+  #     - 27017:27017
+  #   command: mongod
