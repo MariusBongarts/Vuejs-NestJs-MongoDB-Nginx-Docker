@@ -6,16 +6,23 @@
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 10px;
-  border-radius: 5px;
-  overflow: hidden;
 }
 
-.termino-is-mobile .termino-toolbar {
+@media (min-width: 600px) {
+  .termino-container {
+    margin: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+}
+
+.example-is-mobile .example-toolbar {
   position: fixed;
   /* Make sure the toolbar will stay on top of the content as it scrolls past. */
   z-index: 2;
 }
+
+
 
 h1.termino-app-name {
   margin-left: 8px;

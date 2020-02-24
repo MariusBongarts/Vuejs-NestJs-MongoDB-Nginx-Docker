@@ -2,3 +2,12 @@
   background-color: white;
   box-shadow: 0 4px 2px -2px gray;
 }
+
+
+@media (max-width: 600px) {
+  .termino-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+  }
+}
