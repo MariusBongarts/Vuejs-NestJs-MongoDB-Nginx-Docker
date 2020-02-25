@@ -5,39 +5,31 @@
         <md-button class="md-icon-button" @click="toggleMenu" v-if="!menuVisible">
           <md-icon>menu</md-icon>
         </md-button>
-        <span class="md-title">My Title</span>
+        <span class="md-title">{{ $t('title') }}</span>
       </md-app-toolbar>
 
       <md-app-drawer :md-active.sync="menuVisible" md-persistent="full">
-        <md-toolbar class="md-transparent" md-elevation="0">
-          <span>Navigation</span>
-
-          <div class="md-toolbar-section-end">
-            <md-button class="md-icon-button md-dense" @click="toggleMenu">
-              <md-icon>keyboard_arrow_left</md-icon>
-            </md-button>
-          </div>
-        </md-toolbar>
+        <NavigationSideToolbar @toggleMenu="toggleMenu" />
 
         <md-list>
-          <md-list-item>
+          <md-list-item to="/home">
             <md-icon>move_to_inbox</md-icon>
-            <span class="md-list-item-text">Inbox</span>
+            <span class="md-list-item-text">Dashboard</span>
           </md-list-item>
 
-          <md-list-item>
+          <md-list-item to="/calendar">
             <md-icon>send</md-icon>
-            <span class="md-list-item-text">Sent Mail</span>
+            <span class="md-list-item-text">Kalender</span>
           </md-list-item>
 
-          <md-list-item>
+          <md-list-item to="/customer">
             <md-icon>delete</md-icon>
-            <span class="md-list-item-text">Trash</span>
+            <span class="md-list-item-text">Kunden</span>
           </md-list-item>
 
-          <md-list-item>
+          <md-list-item to="/company">
             <md-icon>error</md-icon>
-            <span class="md-list-item-text">Spam</span>
+            <span class="md-list-item-text">Unternehmen</span>
           </md-list-item>
         </md-list>
       </md-app-drawer>
@@ -51,9 +43,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import NavigationSideToolbar from './NavigationSideToolbar.vue';
 
 @Component({
-  components: {}
+  components: {
+    NavigationSideToolbar
+  }
 })
 export default class Navigation extends Vue {
   menuVisible = false;
@@ -61,15 +56,19 @@ export default class Navigation extends Vue {
   mobile = true;
 
   mounted() {
-    this.mobile = window.screen.width < 900;
-    this.menuVisible = !this.mobile;
     this.listenForResize();
   }
 
   listenForResize() {
+    this.checkMobile();
     window.addEventListener('resize', () => {
-      this.mobile = window.innerWidth < 900;
+      this.checkMobile();
     });
+  }
+
+  checkMobile() {
+    this.mobile = window.innerWidth < 900;
+    this.menuVisible = !this.mobile;
   }
 
   toggleMenu() {
@@ -81,7 +80,7 @@ export default class Navigation extends Vue {
 <style lang="scss" scoped>
 @import './src/theme/variables.scss';
 
-@media (min-width: 600px) {
+@media (min-width: 900px) {
   .page-container {
     padding: 10px;
     background: $primary-gradient;

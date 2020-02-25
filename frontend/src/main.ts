@@ -10,6 +10,7 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router/router';
 import store from './store/store';
+import i18n from './i18n';
 
 // Imports for Vue Material
 Vue.use(MdApp);
@@ -26,5 +27,6 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  i18n,
+  render: (h) => h(App)
 }).$mount('#app');

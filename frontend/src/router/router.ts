@@ -10,8 +10,12 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    redirect: '/home',
     children: [
-      { path: '/', component: HelloWorld }
+      { path: '/home', component: HelloWorld },
+      { path: '/calendar', component: HelloWorld },
+      { path: '/customer', component: HelloWorld },
+      { path: '/company', component: HelloWorld }
     ]
   },
   {
