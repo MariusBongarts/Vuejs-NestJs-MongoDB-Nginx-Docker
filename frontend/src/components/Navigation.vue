@@ -1,7 +1,7 @@
 <template>
   <div class="page-container">
     <md-app>
-      <md-app-toolbar class="md-primary">
+      <md-app-toolbar class="md-transparent">
         <md-button class="md-icon-button" @click="toggleMenu" v-if="!menuVisible">
           <md-icon>menu</md-icon>
         </md-button>
@@ -56,7 +56,21 @@ import { Component, Vue } from 'vue-property-decorator';
   components: {}
 })
 export default class Navigation extends Vue {
-  private menuVisible = true;
+  menuVisible = false;
+
+  mobile = true;
+
+  mounted() {
+    this.mobile = window.screen.width < 900;
+    this.menuVisible = !this.mobile;
+    this.listenForResize();
+  }
+
+  listenForResize() {
+    window.addEventListener('resize', () => {
+      this.mobile = window.innerWidth < 900;
+    });
+  }
 
   toggleMenu() {
     this.menuVisible = !this.menuVisible;
@@ -65,8 +79,18 @@ export default class Navigation extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import './src/theme/variables.scss';
+
+@media (min-width: 600px) {
+  .page-container {
+    padding: 10px;
+    background: $primary-gradient;
+  }
+}
+
 .md-app {
   height: 100%;
+  border-radius: 8px;
 }
 
 // Demo purposes only
