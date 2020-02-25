@@ -1,0 +1,11 @@
+
+@import './variables.scss';
+
+// Change the primary color here: palettes are defined under vue-material/dist/theme/palette.scss
+@include md-register-theme("default", (
+  primary: $primary, // The primary color of your application
+  accent: $accent, // The accent or secondary color
+  theme: light // This can be dark or light
+));
+
+@import "~vue-material/dist/theme/all";
