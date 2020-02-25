@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/camelcase
-import { jwt_decode } from 'jwt-decode';
+import * as jwt_decode from 'jwt-decode';
 import { MutationTree } from 'vuex';
 import { JwtPayload } from '../models/JwtPayload';
 import { AuthState } from './auth-state';
@@ -9,7 +9,13 @@ const state: AuthState = {
 };
 
 const getters = {
-  getJwtPayload: () => jwt_decode(state.jwt) as JwtPayload
+  getJwtPayload: () => {
+    try {
+      return jwt_decode(state.jwt) as JwtPayload;
+    } catch (error) {
+      return {};
+    }
+  }
 };
 
 const mutations: MutationTree<AuthState> = {

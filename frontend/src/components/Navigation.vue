@@ -2,13 +2,12 @@
   <div class="page-container">
     <md-app>
       <md-app-toolbar class="md-transparent">
-        <md-button class="md-icon-button" @click="toggleMenu" v-if="!menuVisible">
-          <md-icon>menu</md-icon>
-        </md-button>
-        <span class="md-title">{{ $t('title') }}</span>
+        <!-- Toolbar on top -->
+        <NavigationToolbar @toggleMenu="toggleMenu" @logout="logout" :menuVisible="menuVisible" />
       </md-app-toolbar>
 
       <md-app-drawer :md-active.sync="menuVisible" md-persistent="full">
+        <!-- Toolbar for side navigation -->
         <NavigationSideToolbar @toggleMenu="toggleMenu" />
 
         <md-list>
@@ -44,10 +43,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import NavigationSideToolbar from './NavigationSideToolbar.vue';
+import NavigationToolbar from './NavigationToolbar.vue';
 
 @Component({
   components: {
-    NavigationSideToolbar
+    NavigationSideToolbar,
+    NavigationToolbar
   }
 })
 export default class Navigation extends Vue {
@@ -73,6 +74,11 @@ export default class Navigation extends Vue {
 
   toggleMenu() {
     this.menuVisible = !this.menuVisible;
+  }
+
+  async logout() {
+    localStorage.jwtTermino = '';
+    await this.$router.push({ path: '/', name: 'landing' });
   }
 }
 </script>
