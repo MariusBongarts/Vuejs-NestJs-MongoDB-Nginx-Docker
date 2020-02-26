@@ -1,8 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HelloWorld from '@/components/HelloWorld.vue';
-import { AuthStore } from '../store/auth-store';
 import Home from '../views/Home.vue';
+import Dashboard from '../components/Dashboard.vue';
 
 Vue.use(VueRouter);
 
@@ -12,18 +11,35 @@ const routes = [
     name: 'Home',
     component: Home,
     children: [
-      { path: '/home', component: HelloWorld, name: 'dashboard' },
-      { path: '/calendar', component: HelloWorld },
-      { path: '/customer', component: HelloWorld },
-      { path: '/company', component: HelloWorld }
+      {
+        path: '/home',
+        component: Dashboard,
+        name: 'dashboard'
+      },
+      {
+        path: '/calendar',
+        // Lazy loading of component when route is visited
+        component: () => import('../components/Calendar.vue'),
+        name: 'calendar'
+      },
+      {
+        path: '/customers',
+        // Lazy loading of component when route is visited
+        component: () => import('../components/Customers.vue'),
+        name: 'customers'
+      },
+      {
+        path: '/company',
+        // Lazy loading of component when route is visited
+        component: () => import('../components/Company.vue'),
+        name: 'company'
+      }
     ]
   },
   {
     path: '/',
     name: 'landing',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    // Lazy loading of component when route is visited
     component: () => import(/* webpackChunkName: "about" */ '../views/LandingPage.vue'),
   },
 ];

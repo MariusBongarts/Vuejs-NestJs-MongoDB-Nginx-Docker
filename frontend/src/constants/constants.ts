@@ -16,9 +16,9 @@ export const CONSTANTS = {
       subNavs: []
     },
     {
-      path: '/customer',
+      path: '/customers',
       icon: 'people',
-      name: i18n.t('navigation.customer'),
+      name: i18n.t('navigation.customers'),
       subNavs: []
     },
     {

@@ -3,7 +3,7 @@
   "navigation": {
     "home": "Dashboard",
     "calendar": "Calendar",
-    "customer": "Customer",
+    "customers": "Customers",
     "company": "Company"
   }
 }
