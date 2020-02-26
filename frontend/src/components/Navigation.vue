@@ -12,22 +12,22 @@
 
         <md-list>
           <md-list-item to="/home">
-            <md-icon>move_to_inbox</md-icon>
+            <md-icon>dashboard</md-icon>
             <span class="md-list-item-text">Dashboard</span>
           </md-list-item>
 
           <md-list-item to="/calendar">
-            <md-icon>send</md-icon>
+            <md-icon>calendar_today</md-icon>
             <span class="md-list-item-text">Kalender</span>
           </md-list-item>
 
           <md-list-item to="/customer">
-            <md-icon>delete</md-icon>
+            <md-icon>people</md-icon>
             <span class="md-list-item-text">Kunden</span>
           </md-list-item>
 
           <md-list-item to="/company">
-            <md-icon>error</md-icon>
+            <md-icon>house</md-icon>
             <span class="md-list-item-text">Unternehmen</span>
           </md-list-item>
         </md-list>
@@ -44,6 +44,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import NavigationSideToolbar from './NavigationSideToolbar.vue';
 import NavigationToolbar from './NavigationToolbar.vue';
+import { CONSTANTS } from '../constants/constants';
 
 @Component({
   components: {
@@ -58,6 +59,7 @@ export default class Navigation extends Vue {
 
   mounted() {
     this.listenForResize();
+    console.log(CONSTANTS.NAVITEMS);
   }
 
   listenForResize() {

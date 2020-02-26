@@ -37,7 +37,6 @@ const router = new VueRouter({
 // Check beforeEach if user is logged in
 router.beforeEach((to, from, next) => {
   try {
-    console.log(to.path);
     // If user is loggedIn but navigates to login or root
     if ((to.path === '/' || to.path === '/login') && localStorage.jwtTermino) next('/home');
 

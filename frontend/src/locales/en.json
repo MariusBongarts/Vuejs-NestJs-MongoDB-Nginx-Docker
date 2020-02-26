@@ -1,0 +1,9 @@
+{
+  "title": "Termino",
+  "navigation": {
+    "home": "Dashboard",
+    "calendar": "Calendar",
+    "customer": "Customer",
+    "company": "Company"
+  }
+}
