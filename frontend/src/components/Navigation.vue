@@ -10,27 +10,10 @@
         <!-- Toolbar for side navigation -->
         <NavigationSideToolbar @toggleMenu="toggleMenu" />
 
-        <md-list>
-          <md-list-item to="/home">
-            <md-icon>dashboard</md-icon>
-            <span class="md-list-item-text">Dashboard</span>
-          </md-list-item>
+        <!-- Navigation Items in left sidebar -->
+        <NavigationSideNavBar />
 
-          <md-list-item to="/calendar">
-            <md-icon>calendar_today</md-icon>
-            <span class="md-list-item-text">Kalender</span>
-          </md-list-item>
 
-          <md-list-item to="/customer">
-            <md-icon>people</md-icon>
-            <span class="md-list-item-text">Kunden</span>
-          </md-list-item>
-
-          <md-list-item to="/company">
-            <md-icon>house</md-icon>
-            <span class="md-list-item-text">Unternehmen</span>
-          </md-list-item>
-        </md-list>
       </md-app-drawer>
 
       <md-app-content>
@@ -44,12 +27,13 @@
 import { Component, Vue } from 'vue-property-decorator';
 import NavigationSideToolbar from './NavigationSideToolbar.vue';
 import NavigationToolbar from './NavigationToolbar.vue';
-import { CONSTANTS } from '../constants/constants';
+import NavigationSideNavBar from './NavigationSideNavBar.vue';
 
 @Component({
   components: {
     NavigationSideToolbar,
-    NavigationToolbar
+    NavigationToolbar,
+    NavigationSideNavBar
   }
 })
 export default class Navigation extends Vue {
@@ -59,7 +43,6 @@ export default class Navigation extends Vue {
 
   mounted() {
     this.listenForResize();
-    console.log(CONSTANTS.NAVITEMS);
   }
 
   listenForResize() {
