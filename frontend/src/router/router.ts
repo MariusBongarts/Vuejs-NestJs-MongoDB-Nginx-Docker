@@ -1,3 +1,4 @@
+import store from '@/store/store';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
@@ -57,10 +58,10 @@ router.beforeEach((to, from, next) => {
     if ((to.path === '/' || to.path === '/login') && localStorage.jwtTermino) next('/home');
 
     // If user is not loggedIn
-    if ((to.path === '/' || to.path === '/login') && !localStorage.jwtTermino) next();
-
-    // If logged In
-    else localStorage.jwtTermino ? next() : next('/');
+    if ((to.path === '/' || to.path === '/login') && !localStorage.jwtTermino) {
+      store.commit('emitLogout');
+      next();
+    } else localStorage.jwtTermino ? next() : next('/');
   } catch (error) {
     //
   }

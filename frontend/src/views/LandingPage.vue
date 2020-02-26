@@ -6,14 +6,16 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import AuthService from '../services/AuthService';
 
 @Component({
   components: {}
 })
 export default class LandingPage extends Vue {
+  private authService = new AuthService();
+
   async login() {
-    localStorage.jwtTermino = 'pseudoToken';
-    await this.$router.push({ path: 'home', name: 'dashboard' });
+    await this.authService.login();
   }
 }
 </script>

@@ -1,36 +1,32 @@
-// eslint-disable-next-line @typescript-eslint/camelcase
-import * as jwt_decode from 'jwt-decode';
 import { MutationTree } from 'vuex';
-import { JwtPayload } from '../models/JwtPayload';
+import { JwtService } from '../services/JwtService';
+// eslint-disable-next-line @typescript-eslint/camelcase
 import { AuthState } from './auth-state';
 
+const jwtService = new JwtService();
+
+
 const state: AuthState = {
-  jwt: localStorage.jwtTermino
+  jwt: localStorage.jwtTermino,
+  payload: jwtService.getPayLoad(localStorage.jwtTermino)
 };
 
-const getters = {
-  getJwtPayload: () => {
-    try {
-      return jwt_decode(state.jwt) as JwtPayload;
-    } catch (error) {
-      return {};
-    }
-  }
-};
 
 const mutations: MutationTree<AuthState> = {
   emitLogout: () => {
-    state.jwt = '';
     localStorage.jwtTermino = '';
+    state.jwt = '';
+    state.payload = undefined;
   },
-  emitLogin: () => {
-    state.jwt = localStorage.jwtTermino;
+  emitLogin: (state, token: string) => {
+    localStorage.jwtTermino = token;
+    state.jwt = token;
+    state.payload = jwtService.getPayLoad(token);
   }
 };
 
 // eslint-disable-next-line import/prefer-default-export
 export const AuthStore = {
   state,
-  getters,
   mutations
 };

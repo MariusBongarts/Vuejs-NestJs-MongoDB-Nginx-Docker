@@ -18,6 +18,8 @@ module.exports = {
     'linebreak-style': 'off',
     'no-unused-expressions': 0,
     'import/prefer-default-export': 'off',
+    'class-methods-use-this': 'off',
+    'no-shadow': 0
   },
   overrides: [
     {

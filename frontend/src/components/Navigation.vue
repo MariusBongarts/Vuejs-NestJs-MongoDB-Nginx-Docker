@@ -12,8 +12,6 @@
 
         <!-- Navigation Items in left sidebar -->
         <NavigationSideNavBar />
-
-
       </md-app-drawer>
 
       <md-app-content>
@@ -28,6 +26,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import NavigationSideToolbar from './NavigationSideToolbar.vue';
 import NavigationToolbar from './NavigationToolbar.vue';
 import NavigationSideNavBar from './NavigationSideNavBar.vue';
+import AuthService from '../services/AuthService';
 
 @Component({
   components: {
@@ -38,6 +37,8 @@ import NavigationSideNavBar from './NavigationSideNavBar.vue';
 })
 export default class Navigation extends Vue {
   menuVisible = false;
+
+  authService = new AuthService();
 
   mobile = true;
 
@@ -62,8 +63,7 @@ export default class Navigation extends Vue {
   }
 
   async logout() {
-    localStorage.jwtTermino = '';
-    await this.$router.push({ path: '/', name: 'landing' });
+    await this.authService.logout();
   }
 }
 </script>
