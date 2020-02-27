@@ -2,7 +2,8 @@ import '@/theme/theme.scss';
 import 'vue-material/dist/vue-material.min.css';
 import {
   MdContent, MdIcon, MdList, MdToolbar,
-  MdButton, MdDrawer, MdApp
+  MdButton, MdDrawer, MdApp, MdAvatar,
+  MdRipple, MdMenu
 } from 'vue-material/dist/components';
 import Vue from 'vue';
 // import VueMaterial from 'vue-material';
@@ -20,6 +21,9 @@ Vue.use(MdList);
 Vue.use(MdToolbar);
 Vue.use(MdButton);
 Vue.use(MdDrawer);
+Vue.use(MdAvatar);
+Vue.use(MdRipple);
+Vue.use(MdMenu);
 // Vue.use(VueMaterial);
 
 Vue.config.productionTip = false;

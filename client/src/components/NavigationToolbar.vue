@@ -7,7 +7,17 @@
       <span class="md-title">{{ $t('title') }}</span>
     </div>
     <div class="toolbar-sub-container">
-      <md-button class="md-raised md-transparent login-button" @click="logout">Logout</md-button>
+
+      <md-menu md-direction="bottom-start">
+        <md-avatar md-menu-trigger class="md-avatar-icon md-accent">
+          <md-ripple>M</md-ripple>
+        </md-avatar>
+
+        <md-menu-content>
+          <md-menu-item @click="logout">Logout</md-menu-item>
+          <md-menu-item @click="logout">Logout</md-menu-item>
+        </md-menu-content>
+      </md-menu>
     </div>
   </div>
 </template>
