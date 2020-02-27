@@ -14,13 +14,13 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
 COPY package.json /app/package.json
-RUN npm install @angular/cli -g
+RUN npm install -g @vue/cli
 RUN npm install
 
 # add app
 COPY . /app
 
-EXPOSE 4200
+EXPOSE 8080
 
 # start app
 CMD npm start

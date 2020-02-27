@@ -5,25 +5,12 @@ services:
     build:
       context: ./client
     environment:
-      FRONTEND_PORT: 4200
-      API_HOST: 'http://localhost:4200'
-    ports:
-      - 4200:4200
-    volumes:
-      - ./client/src:/app/src/
-    # links:
-    #   - server
-
-  frontend:
-    build:
-      context: ./frontend
-    environment:
-      FRONTEND_PORT: 8080
+      client_PORT: 8080
       API_HOST: 'http://localhost:8080'
     ports:
       - 8080:8080
     volumes:
-      - ./frontend/src:/app/src/
+      - ./client/src:/app/src/
     # links:
     #   - server
 

@@ -1,12 +1,32 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import '@/theme/theme.scss';
+import 'vue-material/dist/vue-material.min.css';
+import {
+  MdContent, MdIcon, MdList, MdToolbar,
+  MdButton, MdDrawer, MdApp
+} from 'vue-material/dist/components';
+import Vue from 'vue';
+// import VueMaterial from 'vue-material';
+import App from './App.vue';
+import './registerServiceWorker';
+import router from './router/router';
+import store from './store/store';
+import i18n from './i18n';
 
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+// Imports for Vue Material
+Vue.use(MdApp);
+Vue.use(MdContent);
+Vue.use(MdIcon);
+Vue.use(MdList);
+Vue.use(MdToolbar);
+Vue.use(MdButton);
+Vue.use(MdDrawer);
+// Vue.use(VueMaterial);
 
-if (environment.production) {
-  enableProdMode();
-}
+Vue.config.productionTip = false;
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+new Vue({
+  router,
+  store,
+  i18n,
+  render: (h) => h(App)
+}).$mount('#app');
