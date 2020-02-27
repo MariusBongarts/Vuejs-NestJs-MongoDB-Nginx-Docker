@@ -13,7 +13,6 @@
         <!-- Navigation Items in left sidebar -->
         <NavigationSideNavBar />
       </md-app-drawer>
-
       <md-app-content>
         <slot></slot>
       </md-app-content>

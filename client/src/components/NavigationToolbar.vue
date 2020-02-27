@@ -15,7 +15,6 @@
 
         <md-menu-content>
           <md-menu-item @click="logout">Logout</md-menu-item>
-          <md-menu-item @click="logout">Logout</md-menu-item>
         </md-menu-content>
       </md-menu>
     </div>
