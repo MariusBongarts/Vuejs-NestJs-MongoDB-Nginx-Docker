@@ -35,7 +35,8 @@ services:
     image: mongo:latest
     container_name: 'termino_database'
     volumes:
-      - ./db:/data/db
+      - mongodata:/data/db
+      - mongodb_config:/data/configdb
       - ./mongodb/:/docker-entrypoint-initdb.d/
     expose:
       - 27017
@@ -48,3 +49,8 @@ services:
       - MONGO_PASSWORD=${MONGO_PASSWORD}
       - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
     command: mongod
+
+# Create volume for mongodb data because volume mounting is not working for windows machines
+volumes:
+  mongodata:
+  mongodb_config:
