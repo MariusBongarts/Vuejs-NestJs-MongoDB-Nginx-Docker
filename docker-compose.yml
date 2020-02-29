@@ -1,41 +1,50 @@
 version: '3.6'
 services:
 
-  client:
-    build:
-      context: ./client
-    environment:
-      client_PORT: 8080
-      API_HOST: 'http://localhost:8080'
-    ports:
-      - 8080:8080
-    volumes:
-      - ./client/src:/app/src/
-    # links:
-    #   - server
-
-
-  # server:
+  # client:
   #   build:
-  #     context: ./server/
-  #   expose:
-  #     - 3000
+  #     context: ./client
   #   environment:
-  #     API_HOST: 'http://localhost:3000'
-  #     APP_SERVER_PORT: 3000
+  #     client_PORT: 8080
+  #     API_HOST: 'http://localhost:8080'
   #   ports:
-  #     - 3000:3000
+  #     - 8080:8080
   #   volumes:
-  #     - ./server/src:/srv/app/server/src
-  #   command: npm start
-  #   depends_on:
-  #     - mongo
+  #     - ./client/src:/app/src/
+  #   links:
+  #     - server
 
-  # mongo:
-  #   image: mongo:latest
-  #   container_name: 'mongodb'
-  #   volumes:
-  #     - /data:/data
-  #   ports:
-  #     - 27017:27017
-  #   command: mongod
+
+  server:
+    build:
+      context: ./server/
+    expose:
+      - 3000
+    environment:
+      API_HOST: 'http://localhost:3000'
+      APP_SERVER_PORT: 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./server/src:/srv/app/server/src
+    command: npm start
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    container_name: 'termino_database'
+    volumes:
+      - ./db:/data/db
+      - ./mongodb/:/docker-entrypoint-initdb.d/
+    expose:
+      - 27017
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_USER=${MONGO_USER}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
+    command: mongod
