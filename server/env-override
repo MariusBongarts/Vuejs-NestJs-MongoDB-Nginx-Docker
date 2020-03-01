@@ -2,5 +2,12 @@ Step 1: Rename this file to either development.env or production.env
 Step 2: Enter required fields
 Step 3: Delete these 3 step instructions
 
-MONGODB_URI =
-JWT_KEY=
+MONGODB_URI=mongodb://mongodb/termino
+MONGO_USER=terminouser
+MONGO_PASSWORD=terminopassword
+
+JWT_KEY=MySuperFuckingSecretJwtKey
+EMAIL_HOST=
+EMAIL_PORT=
+EMAIL_USERNAME=
+EMAIL_PASSWORD=
