@@ -7,37 +7,35 @@
       <span class="md-title">{{ $t('title') }}</span>
     </div>
     <div class="toolbar-sub-container">
-
-      <md-menu md-direction="bottom-start">
-        <md-avatar md-menu-trigger class="md-avatar-icon md-accent">
-          <md-ripple>M</md-ripple>
-        </md-avatar>
-
-        <md-menu-content>
-          <md-menu-item @click="logout">Logout</md-menu-item>
-        </md-menu-content>
-      </md-menu>
+      <NavigationToolbarMenu @logout="logout" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
+import NavigationToolbarMenu from './NavigationToolbarMenu.vue';
 
 @Component({
-  components: {}
+  components: {
+    NavigationToolbarMenu
+  }
 })
 export default class NavigationToolbar extends Vue {
   @Prop() menuVisible!: boolean;
 
   /**
    * Emits event to open/close sidebar in parent componnet
-   * @method toggleMenu()
+   * @method toggleMenu
    */
   toggleMenu() {
     this.$emit('toggleMenu');
   }
 
+  /**
+   * Emits event to logout in parent componnet
+   * @method logout
+   */
   logout() {
     this.$emit('logout');
   }

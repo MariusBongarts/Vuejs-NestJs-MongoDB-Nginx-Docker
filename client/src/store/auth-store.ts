@@ -25,7 +25,6 @@ const mutations: MutationTree<AuthState> = {
   }
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const AuthStore = {
   state,
   mutations

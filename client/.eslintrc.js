@@ -5,7 +5,6 @@ module.exports = {
   },
   extends: [
     'plugin:vue/essential',
-    '@vue/airbnb',
     '@vue/typescript/recommended',
   ],
   parserOptions: {
@@ -17,8 +16,6 @@ module.exports = {
     'comma-dangle': 0,
     'linebreak-style': 'off',
     'no-unused-expressions': 0,
-    'import/prefer-default-export': 'off',
-    'class-methods-use-this': 'off',
     'no-shadow': 0
   },
   overrides: [

@@ -5,7 +5,7 @@ services:
     container_name: vuejs-frontend
     build:
       context: ./client
-      dockerfile: dev.Dockerfile
+      dockerfile: Dockerfile
     environment:
       client_PORT: 8080
       API_HOST: 'http://localhost:8080'
@@ -53,6 +53,14 @@ services:
       - MONGO_PASSWORD=${MONGO_PASSWORD}
       - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
     command: mongod
+
+  nginx:
+    build:
+      context: client
+    ports:
+      - '443:443'
+      - '80:80'
+    restart: on-failure
 
 # Create volume for mongodb data because volume mounting is not working for windows machines
 volumes:

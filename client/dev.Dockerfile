@@ -1,5 +1,5 @@
-# build stage
-FROM node:12.2.0 as build
+# base image
+FROM node:12.2.0
 
 # install chrome for protractor tests
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
@@ -20,14 +20,7 @@ RUN npm install
 # add app
 COPY . /app
 
-# Build App
-RUN npm run build
+EXPOSE 8080
 
-
-# production stage
-FROM nginx:1.16.0-alpine as deploy
-COPY --from=build /app/dist /usr/share/nginx/html
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx/nginx.conf /etc/nginx/conf.d
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# start app
+CMD npm start

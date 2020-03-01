@@ -6,8 +6,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
 import { LoggerService } from './logger/logger.service';
 import { LoggerModule } from './logger/logger.module';
 import { ActivationModule } from './activation/activation.module';
@@ -15,11 +13,6 @@ import { PasswordResetModule } from './password-reset/password-reset.module';
 
 @Module({
   imports: [
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'client'),
-      renderPath: '',
-      serveStaticOptions: {}
-    }),
     AuthModule,
     UsersModule,
     ActivationModule,
