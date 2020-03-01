@@ -1,3 +1,6 @@
+1. Rename this file to .env
+2. Delete the first to lines of this file
+
 MONGO_INITDB_DATABASE=termino
 MONGO_INITDB_ROOT_USERNAME=admin
 MONGO_INITDB_ROOT_PASSWORD=root
