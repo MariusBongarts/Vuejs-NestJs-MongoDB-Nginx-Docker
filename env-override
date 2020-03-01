@@ -6,3 +6,7 @@ MONGO_INITDB_ROOT_USERNAME=admin
 MONGO_INITDB_ROOT_PASSWORD=root
 MONGO_USER=terminouser
 MONGO_PASSWORD=terminopassword
+
+ADMIN_USER=
+# Has to be a hash because we are using bcrypt
+ADMIN_PASSWORD=

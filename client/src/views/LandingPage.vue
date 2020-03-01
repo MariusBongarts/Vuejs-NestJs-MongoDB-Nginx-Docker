@@ -17,9 +17,10 @@ export default class LandingPage extends Vue {
 
   async login() {
     const loginData: LoginUserDto = {
-      email: 'user@termino.de',
-      password: 'Termino123'
+      email: process.env.VUE_APP_ADMIN_USER,
+      password: process.env.VUE_APP_ADMIN_PASSWORD,
     };
+    console.log(loginData);
     await this.authService.login(loginData);
   }
 }

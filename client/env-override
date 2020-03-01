@@ -2,7 +2,8 @@
 2. Rename this file to either .env.production or .env.development
 3. Consider that in production the NestJs nginx config server is listening on {{yourOrigin}}/server
 4. In Development mode the server is listening on localhost:3000
-5. Delete the first 5 lines of this file
+5. In Vue env variables has to start with VUE_APP_
+6. Delete the first 6 lines of this file
 
 VUE_APP_I18N_LOCALE=de
 VUE_APP_I18N_FALLBACK_LOCALE=de
@@ -11,3 +12,6 @@ VUE_APP_PRODUCTION=true
 VUE_APP_MODE=prod
 
 VUE_APP_BACKEND_URL=http://{$yourOrigin}/server
+
+VUE_APP_ADMIN_USER=
+VUE_APP_ADMIN_PASSWORD=
