@@ -6,6 +6,9 @@ MONGODB_URI=mongodb://mongodb/termino
 MONGO_USER=terminouser
 MONGO_PASSWORD=terminopassword
 
+BACKEND_URL=http://localhost:3000
+CLIENT_URL=http://localhost:8080
+
 JWT_KEY=MySuperFuckingSecretJwtKey
 EMAIL_HOST=
 EMAIL_PORT=
