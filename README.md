@@ -9,7 +9,8 @@ $ docker-compose up
 ```
 
 ## Production
-Fill out env-override and rename file
+
+#### Important: Fill out .env-override and rename it to .env
 
 ```bash
 $ docker-compose -f docker-compose.prod.yml up -d --build

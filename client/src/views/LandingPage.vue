@@ -7,6 +7,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import AuthService from '../services/AuthService';
+import { LoginUserDto } from '../models/LoginUserDto';
 
 @Component({
   components: {}
@@ -15,7 +16,11 @@ export default class LandingPage extends Vue {
   private authService = new AuthService();
 
   async login() {
-    await this.authService.login();
+    const loginData: LoginUserDto = {
+      email: 'user@termino.de',
+      password: 'Termino123'
+    };
+    await this.authService.login(loginData);
   }
 }
 </script>
