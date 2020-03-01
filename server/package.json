@@ -10,7 +10,7 @@
     "start": "set NODE_ENV=development && ts-node -r tsconfig-paths/register src/main.ts",
     "start:dev": "nest build --watch --webpack --webpackPath webpack-hmr.config.js",
     "start:debug": "nodemon --config nodemon-debug.json",
-    "start:prod": "set NODE_ENV=production && npm run build && cp production.env dist/ && node dist/main.js",
+    "start:prod": "export NODE_ENV=production && npm run build && cp production.env dist/ && node dist/main.js",
     "deploy:prod": "npm run build && set NODE_ENV=production && node dist/main.js",
     "deploy:prod:linux": "npm run build && export NODE_ENV=production && pm2 start node dist/main.js --watch",
     "lint": "tslint -p tsconfig.json -c tslint.json",

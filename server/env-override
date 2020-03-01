@@ -1,6 +1,6 @@
 Step 1: Rename this file to either development.env or production.env
 Step 2: Enter required fields
-Step 3: Delete these 3 step instructions
+Step 3: Delete the first 3 lines of this file!
 
 MONGODB_URI=mongodb://mongodb/termino
 MONGO_USER=terminouser

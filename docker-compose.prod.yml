@@ -30,7 +30,7 @@ services:
       - 3000:3000
     volumes:
       - ./server/src:/app/src/
-    command: npm run start:dev
+    command: npm run start:prod
     depends_on:
       - mongodb
 
