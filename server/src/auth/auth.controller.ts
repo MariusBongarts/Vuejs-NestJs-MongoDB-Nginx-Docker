@@ -10,6 +10,16 @@ export class AuthController {
 
     }
 
+    /**
+     * Checks email and password against hash value in database.
+     * Returns a JSON Web Token on success.
+     * Throws InvalidEmailOrPasswordException or EmailNotConfirmedException on failure
+     *
+     * @param {LoginUserDto} loginUserDto
+     * @param {*} req
+     * @returns
+     * @memberof AuthController
+     */
     @Post()
     async login(@Body() loginUserDto: LoginUserDto, @Req() req) {
         this.logger.log(`Login attempt of ${loginUserDto.email} from ${req.get('origin')}.`);

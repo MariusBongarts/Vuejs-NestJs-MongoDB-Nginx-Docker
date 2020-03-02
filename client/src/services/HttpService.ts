@@ -22,7 +22,7 @@ const authInterceptor = (config: AxiosRequestConfig) => {
 const loggerInterceptor = (config: any) =>
   /** TODO */
   config
-;
+  ;
 
 /** Adding the request interceptors */
 httpClient.interceptors.request.use(authInterceptor);
@@ -33,10 +33,10 @@ httpClient.interceptors.response.use(
   (response) =>
     /** TODO: Add any response interceptors */
     response,
-  (error) =>
+  (error) => {
     /** TODO: Do something with response error */
-    Promise.reject(error)
-
+    return Promise.reject(error.response.data)
+  }
 );
 
 export default httpClient;
