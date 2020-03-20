@@ -16,15 +16,15 @@ This Fullstack Skeleton provides a quick start to start building a Fullstack Web
 $ docker-compose up
 ```
 
+Go to http://localhost:8080
+
 ### Production
 
 ```
 $ docker-compose -f docker-compose.prod.yml up -d --build
 ```
 
-## Client
-
-Go to http://localhost:8080 or http://localhost (nginx redirects the port 80 internally to 8080)
+Go to http://localhost (nginx redirects the port 80 internally to 8080)
 
 ### Login Data
 
