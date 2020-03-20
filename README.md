@@ -1,5 +1,5 @@
 ## Description
-This Fullstack Skeleton should provides a quick start to start building a WebApp:
+This Fullstack Skeleton provides a quick start to start building a Fullstack WebApp, it contains:
 
 
 * VueJs Client 
@@ -24,7 +24,7 @@ $ docker-compose -f docker-compose.prod.yml up -d --build
 
 ## Client
 
-Go to http://localhost:8080 or http://localhost (nginx redirect the port 80 internally to 8080)
+Go to http://localhost:8080 or http://localhost (nginx redirects the port 80 internally to 8080)
 
 ### Login Data
 
