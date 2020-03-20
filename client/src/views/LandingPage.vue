@@ -20,11 +20,10 @@ export default class LandingPage extends Vue {
       email: process.env.VUE_APP_ADMIN_USER as string,
       password: process.env.VUE_APP_ADMIN_PASSWORD as string,
     };
-    console.log(loginData);
     try {
       await this.authService.login(loginData);
     } catch (error) {
-      console.log(error);
+      //
     }
   }
 }
