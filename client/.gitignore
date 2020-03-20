@@ -8,8 +8,8 @@ chromedriver.log
 geckodriver.log
 
 # local env files
-.env.local
-.env.*
+# .env.local
+# .env.*
 
 # Log files
 npm-debug.log*
