@@ -37,7 +37,7 @@ services:
   mongodb:
     container_name: mongo-database
     image: mongo:latest
-    container_name: 'termino_database'
+    container_name: 'skeleton_database'
     volumes:
       - mongodata:/data/db
       - mongodb_config:/data/configdb

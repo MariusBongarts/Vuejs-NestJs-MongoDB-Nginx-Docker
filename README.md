@@ -1,24 +1,54 @@
 ## Description
-Fullstack Starter Skeleton
+This Fullstack Skeleton should provides a quick start to start building a WebApp:
 
-VueJs Client + NestJs Server + MongoDB + Nginx
+
+* VueJs Client 
+* NestJs Server
+* MongoDB
+* Docker Compose
+* NGINX configuration
+
 
 ## Installation
 
-Because we do not want to add our .env files to git we have to create the .env files by replacing necessary variables in the given env-overrides templates.
+### Development
+```
+$ docker-compose up
+```
 
-### Follow steps in env-override files:
+### Production
+
+```
+$ docker-compose -f docker-compose.prod.yml up -d --build
+```
+
+## Client
+
+Go to http://localhost:8080 or http://localhost (nginx redirect the port 80 internally to 8080)
+
+### Login Data
+
+During the docker-compose build process a admin user is created to log into the WebApp within the client:
+
+##### Username: admin@skeleton.de
+##### Password: MariusBongarts
+ 
+
+> Attention it is highly recommended to add *.env files to the **.gitignore** file to remove .env files from git
+
+
+#### Steps in env-override files:
+
+To make the start easier, .env files are inside of this Github repository. There are also env-override templates with steps to replace variables in case you want to add those .env files to gitignore.
+
   1. ./env-override
   2. ./client/env-override
   3. ./server/env-override
 
-## Development
-```bash
-$ docker-compose up
-```
+### Sign up new users 
 
-## Production
+You can create new users by creating them in the client.
 
-```bash
-$ docker-compose -f docker-compose.prod.yml up -d --build
-```
+> It is highly recommended to enable email activation in production mode. You have to set **createUserDto.activated to false** in the server´s users.service.ts and set your email configuration variables in the .env files
+
+

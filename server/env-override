@@ -2,14 +2,14 @@ Step 1: Rename this file to either development.env or production.env
 Step 2: Enter required fields
 Step 3: Delete the first 3 lines of this file!
 
-MONGODB_URI=mongodb://mongodb/termino
-MONGO_USER=terminouser
-MONGO_PASSWORD=terminopassword
+MONGODB_URI=mongodb://mongodb/skeleton
+MONGO_USER=skeletonuser
+MONGO_PASSWORD=skeletonpassword
 
 BACKEND_URL=http://localhost:3000
 CLIENT_URL=http://localhost:8080
 
-JWT_KEY=MySuperFuckingSecretJwtKey
+JWT_KEY=ThisSuperSecretKeyShouldBeChanged
 EMAIL_HOST=
 EMAIL_PORT=
 EMAIL_USERNAME=

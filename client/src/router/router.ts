@@ -55,13 +55,13 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   try {
     // If user is loggedIn but navigates to login or root
-    if ((to.path === '/' || to.path === '/login') && localStorage.jwtTermino) next('/home');
+    if ((to.path === '/' || to.path === '/login') && localStorage.jwtSkeleton) next('/home');
 
     // If user is not loggedIn
-    if ((to.path === '/' || to.path === '/login') && !localStorage.jwtTermino) {
+    if ((to.path === '/' || to.path === '/login') && !localStorage.jwtSkeleton) {
       store.commit('emitLogout');
       next();
-    } else localStorage.jwtTermino ? next() : next('/');
+    } else localStorage.jwtSkeleton ? next() : next('/');
   } catch (error) {
     //
   }

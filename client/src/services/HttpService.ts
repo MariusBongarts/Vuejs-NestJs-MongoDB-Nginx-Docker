@@ -35,7 +35,7 @@ httpClient.interceptors.response.use(
     response,
   (error) => {
     /** TODO: Do something with response error */
-    return Promise.reject(error.response.data)
+    return Promise.reject(error.response.data || {})
   }
 );
 

@@ -1,11 +1,11 @@
 1. Rename this file to .env
 2. Delete the first to lines of this file
 
-MONGO_INITDB_DATABASE=termino
+MONGO_INITDB_DATABASE=skeleton
 MONGO_INITDB_ROOT_USERNAME=admin
 MONGO_INITDB_ROOT_PASSWORD=root
-MONGO_USER=terminouser
-MONGO_PASSWORD=terminopassword
+MONGO_USER=skeletonuser
+MONGO_PASSWORD=skeletonpassword
 
 ADMIN_USER=
 # Has to be a hash because we are using bcrypt

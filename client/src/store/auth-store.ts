@@ -7,19 +7,19 @@ const jwtService = new JwtService();
 
 
 const state: AuthState = {
-  jwt: localStorage.jwtTermino,
-  payload: jwtService.getPayLoad(localStorage.jwtTermino)
+  jwt: localStorage.jwtSkeleton,
+  payload: jwtService.getPayLoad(localStorage.jwtSkeleton)
 };
 
 
 const mutations: MutationTree<AuthState> = {
   emitLogout: () => {
-    localStorage.jwtTermino = '';
+    localStorage.jwtSkeleton = '';
     state.jwt = '';
     state.payload = undefined;
   },
   emitLogin: (state, token: string) => {
-    localStorage.jwtTermino = token;
+    localStorage.jwtSkeleton = token;
     state.jwt = token;
     state.payload = jwtService.getPayLoad(token);
   }

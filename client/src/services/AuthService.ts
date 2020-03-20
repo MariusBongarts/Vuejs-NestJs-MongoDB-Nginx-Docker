@@ -14,7 +14,6 @@ export default class AuthService {
    */
   async login(loginUserDto: LoginUserDto) {
     const response = await httpClient.post('auth', loginUserDto);
-    // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDdlYTYyMzU2NTZmMTJiNDAyYjUzYzAiLCJlbWFpbCI6Im1hcml1c2JvbmdhcnRzQHdlYi5kZSIsImlhdCI6MTU4MjIzMTk1MiwiZXhwIjoxNjE4MjMxOTUyfQ.xw8gQ1fyUaP0oom-zGopibWshkO3kQF8ICuhX5wSHb4';
     if (response) {
       const token = response.data.token;
       store.commit('emitLogin', token);
@@ -30,7 +29,7 @@ export default class AuthService {
    * @memberof AuthService
    */
   async logout() {
-    localStorage.jwtTermino = '';
+    localStorage.jwtSkeleton = '';
     router.push({ path: '', name: 'landing' });
   }
 }

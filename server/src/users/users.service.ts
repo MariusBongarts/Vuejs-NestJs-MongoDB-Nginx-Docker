@@ -26,6 +26,7 @@ export class UsersService {
   }
 
   async create(createUserDto: CreateUserDto) {
+    // Set this to false if you want to enable email activation
     createUserDto.activated = false;
     const createdUser = new this.userModel(createUserDto);
     await createdUser.save().catch(error => {
