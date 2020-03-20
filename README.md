@@ -1,5 +1,5 @@
 ## Description
-This Fullstack Skeleton should provides a quick start to start building a WebApp:
+This Fullstack Skeleton provides a quick start to start building a Fullstack WebApp, it contains:
 
 
 * VueJs Client 
