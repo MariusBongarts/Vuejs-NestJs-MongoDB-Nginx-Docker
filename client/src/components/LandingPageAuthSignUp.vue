@@ -2,15 +2,17 @@
   <div class="sign-in-container">
     <div class="form">
       <md-field>
-        <label>E-mail</label>
-        <md-input v-model="login.email" autofocus></md-input>
+        <label>{{ $t('LandingPageAuthSignIn.email') }}</label>
+        <md-input v-model="loginData.email" autofocus></md-input>
       </md-field>
 
       <md-field md-has-password>
-        <label>Password</label>
-        <md-input v-model="login.password" type="password"></md-input>
+        <label>{{ $t('LandingPageAuthSignIn.login') }}</label>
+        <md-input v-model="loginData.password" type="password"></md-input>
       </md-field>
+      <span class="md-error" v-if="error">{{ error }}</span>
       <div class="actions">
+        <a class="reset-password">{{ $t('LandingPageAuthSignIn.resetPassword') }}</a>
         <md-button class="md-raised md-primary" @click="auth">{{ $t('LandingPageAuth.signUp') }}</md-button>
       </div>
     </div>
@@ -23,25 +25,31 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import AuthService from '../services/AuthService';
+import { SignUpUserDto } from '../models/SignUpUserDto';
 
 @Component({
   components: {}
 })
 export default class LandingPageAuthSignUp extends Vue {
+  private authService = new AuthService();
+
   showDialog = false;
   loading = false;
-  login = {
+  loginData: SignUpUserDto = {
     email: '',
     password: ''
   };
+  error = '';
 
-  auth() {
+  async auth() {
     this.loading = true;
-    console.log(this.login);
-    setTimeout(() => {
+    try {
+      await this.authService.signUp(this.loginData);
+    } catch (error) {
+      this.error = error.error;
       this.loading = false;
-      this.showDialog = false;
-    }, 5000);
+    }
   }
 }
 </script>
@@ -52,7 +60,7 @@ export default class LandingPageAuthSignUp extends Vue {
   .form {
     .actions {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       margin-top: 30px;
     }
     input {
@@ -72,5 +80,9 @@ export default class LandingPageAuthSignUp extends Vue {
     align-items: center;
     justify-content: center;
   }
+}
+
+.reset-password {
+  cursor: pointer;
 }
 </style>
