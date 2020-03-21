@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <md-button class="md-raised md-accent login-button" @click="login">Login</md-button>
+    <LandingPageAuth />
   </div>
 </template>
 
@@ -8,9 +8,12 @@
 import { Component, Vue } from 'vue-property-decorator';
 import AuthService from '../services/AuthService';
 import { LoginUserDto } from '../models/LoginUserDto';
+import LandingPageAuth from './../components/LandingPageAuth.vue';
 
 @Component({
-  components: {}
+  components: {
+    LandingPageAuth
+  }
 })
 export default class LandingPage extends Vue {
   private authService = new AuthService();
@@ -18,7 +21,7 @@ export default class LandingPage extends Vue {
   async login() {
     const loginData: LoginUserDto = {
       email: process.env.VUE_APP_ADMIN_USER as string,
-      password: process.env.VUE_APP_ADMIN_PASSWORD as string,
+      password: process.env.VUE_APP_ADMIN_PASSWORD as string
     };
     try {
       await this.authService.login(loginData);
@@ -40,7 +43,4 @@ export default class LandingPage extends Vue {
   justify-content: center;
 }
 
-.login-button {
-  margin: auto;
-}
 </style>

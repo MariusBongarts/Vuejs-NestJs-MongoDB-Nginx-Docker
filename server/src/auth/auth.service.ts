@@ -21,6 +21,9 @@ export class AuthService {
 
             return new Promise((resolve, reject) => {
 
+                // If email is invalid
+                if (!userToAttempt) reject(new InvalidEmailOrPasswordException());
+
                 // Check the supplied password against the hash stored for this email address
                 // @ts-ignore
                 userToAttempt.checkPassword(loginAttempt.password, (err, isMatch) => {

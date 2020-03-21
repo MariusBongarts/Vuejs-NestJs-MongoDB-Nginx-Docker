@@ -3,7 +3,8 @@ import 'vue-material/dist/vue-material.min.css';
 import {
   MdContent, MdIcon, MdList, MdToolbar,
   MdButton, MdDrawer, MdApp, MdAvatar,
-  MdRipple, MdMenu
+  MdRipple, MdMenu, MdDialog, MdDialogPrompt,
+  MdField, MdTabs, MdProgress
 } from 'vue-material/dist/components';
 import Vue from 'vue';
 // import VueMaterial from 'vue-material';
@@ -24,6 +25,11 @@ Vue.use(MdDrawer);
 Vue.use(MdAvatar);
 Vue.use(MdRipple);
 Vue.use(MdMenu);
+Vue.use(MdField);
+Vue.use(MdDialog);
+Vue.use(MdDialogPrompt);
+Vue.use(MdTabs);
+Vue.use(MdProgress);
 // Vue.use(VueMaterial);
 
 Vue.config.productionTip = false;

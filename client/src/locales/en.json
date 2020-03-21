@@ -5,5 +5,11 @@
     "calendar": "Calendar",
     "customers": "Customers",
     "company": "Company"
+  },
+  "LandingPageAuthSignIn": {
+    "password": "Password",
+    "email": "E-Mail",
+    "resetPassword": "Forgot password?",
+    "login": "Anmelden"
   }
 }

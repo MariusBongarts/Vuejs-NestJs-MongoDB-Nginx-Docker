@@ -22,6 +22,8 @@
     "vue-material": "^1.0.0-beta-11",
     "vue-property-decorator": "^8.3.0",
     "vue-router": "^3.1.5",
+    "vue-threejs": "^0.2.0-alpha.1",
+    "vuelidate": "^0.7.5",
     "vuex": "^3.1.2"
   },
   "devDependencies": {
