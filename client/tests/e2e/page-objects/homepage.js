@@ -16,6 +16,13 @@ module.exports = {
   // A page object can have elements
   elements: {
     appContainer: '#app',
+    loginBtn: '#app > div > div > button',
+    overlay: '.md-overlay.md-fixed.md-dialog-overlay',
+    emailInput: '#email',
+    passwordInput: '#password',
+    signInBtn: 'div.actions > button',
+    sideDrawer: '.md-app-side-drawer',
+    errorMsg: '.md-error'
   },
 
   // Or a page objects can also have sections
@@ -30,8 +37,8 @@ module.exports = {
       // - a page object section can also have sub-sections
       // - elements or sub-sections located here are retrieved using the "app" section as the base
       sections: {
-        headline: {
-          selector: 'h1',
+        mdError: {
+          selector: '.md-error',
         },
 
         welcome: {

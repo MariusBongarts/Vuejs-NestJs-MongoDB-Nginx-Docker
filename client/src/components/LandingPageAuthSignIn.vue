@@ -3,12 +3,12 @@
     <div class="form">
       <md-field>
         <label>{{ $t('LandingPageAuthSignIn.email') }}</label>
-        <md-input v-model="loginData.email" autofocus></md-input>
+        <md-input id="email" name="email" v-model="loginData.email" autofocus></md-input>
       </md-field>
 
       <md-field md-has-password>
         <label>{{ $t('LandingPageAuthSignIn.login') }}</label>
-        <md-input v-model="loginData.password" type="password"></md-input>
+        <md-input id="password" name="password" v-model="loginData.password" type="password"></md-input>
       </md-field>
       <span class="md-error" v-if="error">{{ error }}</span>
       <div class="actions">
