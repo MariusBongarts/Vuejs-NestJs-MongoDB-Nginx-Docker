@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+  },
+  "include": [
+      "e2e/**/*.ts"
+  ],
+  "exclude": [
+  ]
+}

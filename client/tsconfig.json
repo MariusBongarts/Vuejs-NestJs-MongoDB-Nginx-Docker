@@ -35,7 +35,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx", "tests/e2e/specs/test-with-pageobjects.js"
+    "tests/**/*.tsx", "tests/e2e/page-objects/homepage.js", "tests/e2e/specs/test-with-pageobjects.js"
   ],
   "exclude": [
     "node_modules"
