@@ -1,4 +1,4 @@
-import axios, { AxiosBasicCredentials, AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { AuthStore } from '../store/auth-store';
 
 /** Default config for axios instance */
@@ -19,7 +19,7 @@ const authInterceptor = (config: AxiosRequestConfig) => {
 };
 
 /** logger interceptors */
-const loggerInterceptor = (config: any) =>
+const loggerInterceptor = (config) =>
   /** TODO */
   config
   ;
