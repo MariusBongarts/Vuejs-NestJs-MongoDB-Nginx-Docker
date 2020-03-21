@@ -4,10 +4,10 @@
       <md-icon class="close-button" @click.native="showDialog = false">close</md-icon>
       <div class="tab-container">
       <md-tabs md-dynamic-height>
-        <md-tab md-label="SIGN IN">
+        <md-tab :md-label="$t('LandingPageAuth.signIn')">
           <LandingPageAuthSignIn />
         </md-tab>
-        <md-tab md-label="SIGN UP">
+        <md-tab :md-label="$t('LandingPageAuth.signUp')">
           <LandingPageAuthSignUp />
         </md-tab>
       </md-tabs>

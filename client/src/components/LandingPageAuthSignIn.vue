@@ -7,12 +7,12 @@
       </md-field>
 
       <md-field md-has-password>
-        <label>{{ $t('LandingPageAuthSignIn.password') }}</label>
+        <label>{{ $t('LandingPageAuthSignIn.login') }}</label>
         <md-input v-model="loginData.password" type="password"></md-input>
       </md-field>
       <span class="md-error" v-if="error">{{ error }}</span>
       <div class="actions">
-        <a>{{ $t('LandingPageAuthSignIn.resetPassword') }}</a>
+        <a class="reset-password">{{ $t('LandingPageAuthSignIn.resetPassword') }}</a>
         <md-button class="md-raised md-primary" @click="auth">{{ $t('LandingPageAuthSignIn.login') }}</md-button>
       </div>
     </div>
@@ -80,5 +80,9 @@ export default class LandingPageAuthSignIn extends Vue {
     align-items: center;
     justify-content: center;
   }
+}
+
+.reset-password {
+  cursor: pointer;
 }
 </style>

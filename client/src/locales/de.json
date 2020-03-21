@@ -10,6 +10,13 @@
     "password": "Passwort",
     "email": "E-Mail",
     "resetPassword": "Passwort vergessen?",
-    "login": "Sign In"
+    "login": "Anmelden"
+  },
+  "NavigationToolbarMenu": {
+    "logout": "Ausloggen"
+  },
+  "LandingPageAuth": {
+    "signUp": "Registrieren",
+    "signIn": "Login"
   }
 }

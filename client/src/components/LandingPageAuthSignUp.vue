@@ -11,7 +11,7 @@
         <md-input v-model="login.password" type="password"></md-input>
       </md-field>
       <div class="actions">
-        <md-button class="md-raised md-primary" @click="auth">SIGN UP</md-button>
+        <md-button class="md-raised md-primary" @click="auth">{{ $t('LandingPageAuth.signUp') }}</md-button>
       </div>
     </div>
 
