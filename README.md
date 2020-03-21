@@ -1,8 +1,8 @@
 ## Description
-This Fullstack Skeleton provides a quick start to start building a Fullstack WebApp, it contains:
+This Fullstack Skeleton provides a quick start for building Fullstack WebApps, it contains:
 
 
-* VueJs Client 
+* VueJs Client (Typescript)
 * NestJs Server
 * MongoDB
 * Docker Compose
