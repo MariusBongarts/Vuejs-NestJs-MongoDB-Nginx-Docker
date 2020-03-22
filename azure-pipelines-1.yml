@@ -13,9 +13,6 @@ steps:
 - task: DockerCompose@0
   displayName: Run services
   inputs:
-    containerregistrytype: 'Azure Container Registry'
-    azureSubscription: '$(azureSubscriptionEndpoint)'
-    azureContainerRegistry: '$(azureContainerRegistry)'
     dockerComposeFile: 'docker-compose.yml'
     action: 'Run services'
     detached: false
