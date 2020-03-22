@@ -19,6 +19,11 @@ steps:
 - script: |
     docker exec vuejs-frontend npm run test:unit
   displayName: 'Client tests: Run unit tests'
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
 - script: |
-    docker exec vuejs-frontend npm run test:e2e
+    npm install
+    npm run test:e2e:dev
   displayName: 'Client tests: Run e2e tests'
