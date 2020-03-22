@@ -7,6 +7,7 @@ This Fullstack Skeleton provides a quick start for building Fullstack WebApps, i
 * MongoDB
 * Docker Compose
 * NGINX configuration
+* Azure CI-Pipeline
 
 
 ## Installation
