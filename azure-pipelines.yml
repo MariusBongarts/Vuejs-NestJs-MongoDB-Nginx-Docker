@@ -16,13 +16,16 @@ steps:
     dockerComposeFile: 'docker-compose.yml'
     action: 'Run services'
     detached: true
+- task: NodeTool@0
+inputs:
+  versionSpec: '10.x'
+displayName: 'Install Node.js'
 - script: |
     cd client
+    npm install
     npm run test:unit
-    cd ..
   displayName: 'Client testing: Run unit tests'
 - script: |
-    cd client
     npm run test:e2e
     cd ..
   displayName: 'Client testing: Run e2e tests'
