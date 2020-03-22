@@ -24,6 +24,8 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 - script: |
+    cd client
     npm install
     npm run test:e2e:dev
+    cd ..
   displayName: 'Client tests: Run e2e tests'
