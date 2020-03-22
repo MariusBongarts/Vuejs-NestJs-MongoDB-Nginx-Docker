@@ -11,8 +11,6 @@ module.exports = {
     homepage.waitForElementVisible('@overlay');
     homepage.waitForElementVisible('@emailInput');
     homepage.waitForElementVisible('@passwordInput');
-
-    // Succesfull login
     homepage.setValue('@emailInput', 'admin@skeleton.de');
     homepage.setValue('@passwordInput', 'MariusBongarts');
     homepage.click('@signInBtn');
@@ -34,7 +32,6 @@ module.exports = {
     homepage.waitForElementVisible('@errorMsg');
     homepage.expect.element('@errorMsg').text.to.equal("Invalid email or password!");
     browser.end();
-
   },
   'it should fail sign in because of invalid email': async (browser) => {
     const homepage = browser.page.homepage() as EnhancedPageObject;

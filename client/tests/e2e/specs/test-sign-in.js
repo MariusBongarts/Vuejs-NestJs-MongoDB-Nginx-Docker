@@ -48,7 +48,6 @@ module.exports = {
             homepage.waitForElementVisible('@overlay');
             homepage.waitForElementVisible('@emailInput');
             homepage.waitForElementVisible('@passwordInput');
-            // Succesfull login
             homepage.setValue('@emailInput', 'admin@skeleton.de');
             homepage.setValue('@passwordInput', 'MariusBongarts');
             homepage.click('@signInBtn');

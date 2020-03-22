@@ -8,7 +8,6 @@
  *   https://nightwatchjs.org/guide/working-with-page-objects/
  *
  */
-
 module.exports = {
   url: '/',
   commands: [],
