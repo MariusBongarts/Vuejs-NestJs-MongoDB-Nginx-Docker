@@ -26,6 +26,6 @@ steps:
 - script: |
     cd client
     npm install
-    npm run test:e2e:dev
+    npm run test:e2e
     cd ..
   displayName: 'Client tests: Run e2e tests'

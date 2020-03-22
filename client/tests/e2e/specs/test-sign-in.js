@@ -38,24 +38,20 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 module.exports = {
     beforeEach: function (browser) { return browser.init(); },
-    'it should sign in successfully': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
-        var homepage;
-        return __generator(this, function (_a) {
-            homepage = browser.page.homepage();
-            homepage.waitForElementVisible('@appContainer');
-            homepage.waitForElementVisible('@loginBtn');
-            homepage.click('@loginBtn');
-            homepage.waitForElementVisible('@overlay');
-            homepage.waitForElementVisible('@emailInput');
-            homepage.waitForElementVisible('@passwordInput');
-            homepage.setValue('@emailInput', 'admin@skeleton.de');
-            homepage.setValue('@passwordInput', 'MariusBongarts');
-            homepage.click('@signInBtn');
-            homepage.waitForElementVisible('@sideDrawer');
-            browser.end();
-            return [2 /*return*/];
-        });
-    }); },
+    // 'it should sign in successfully': async (browser: NightwatchBrowser) => {
+    //   const homepage = browser.page.homepage() as EnhancedPageObject;
+    //   homepage.waitForElementVisible('@appContainer');
+    //   homepage.waitForElementVisible('@loginBtn');
+    //   homepage.click('@loginBtn');
+    //   homepage.waitForElementVisible('@overlay');
+    //   homepage.waitForElementVisible('@emailInput');
+    //   homepage.waitForElementVisible('@passwordInput');
+    //   homepage.setValue('@emailInput', 'admin@skeleton.de');
+    //   homepage.setValue('@passwordInput', 'MariusBongarts');
+    //   homepage.click('@signInBtn');
+    //   homepage.waitForElementVisible('@sideDrawer');
+    //   browser.end();
+    // },
     'it should fail sign in because of invalid password': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
         var homepage;
         return __generator(this, function (_a) {

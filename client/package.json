@@ -6,8 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "cd tests && tsc && cd .. && vue-cli-service test:e2e",
-    "test:e2e:dev": "cd tests && tsc && cd .. && vue-cli-service test:e2e --mode development",
+    "test:e2e": "cd tests && tsc && cd .. && vue-cli-service test:e2e --mode development",
     "lint": "vue-cli-service lint",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "start": "vue-cli-service serve"

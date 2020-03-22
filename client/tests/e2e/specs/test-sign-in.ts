@@ -3,21 +3,21 @@ import { NightwatchBrowser, NightwatchCustomPageObjects, EnhancedPageObject } fr
 module.exports = {
   beforeEach: (browser: NightwatchBrowser) => browser.init(),
 
-  // 'it should sign in successfully': async (browser: NightwatchBrowser) => {
-  //   const homepage = browser.page.homepage() as EnhancedPageObject;
-  //   homepage.waitForElementVisible('@appContainer');
-  //   homepage.waitForElementVisible('@loginBtn');
-  //   homepage.click('@loginBtn');
-  //   homepage.waitForElementVisible('@overlay');
-  //   homepage.waitForElementVisible('@emailInput');
-  //   homepage.waitForElementVisible('@passwordInput');
-  //   homepage.setValue('@emailInput', 'admin@skeleton.de');
-  //   homepage.setValue('@passwordInput', 'MariusBongarts');
-  //   homepage.click('@signInBtn');
-  //   homepage.waitForElementVisible('@sideDrawer');
-  //   browser.end();
+  'it should sign in successfully': async (browser: NightwatchBrowser) => {
+    const homepage = browser.page.homepage() as EnhancedPageObject;
+    homepage.waitForElementVisible('@appContainer');
+    homepage.waitForElementVisible('@loginBtn');
+    homepage.click('@loginBtn');
+    homepage.waitForElementVisible('@overlay');
+    homepage.waitForElementVisible('@emailInput');
+    homepage.waitForElementVisible('@passwordInput');
+    homepage.setValue('@emailInput', 'admin@skeleton.de');
+    homepage.setValue('@passwordInput', 'MariusBongarts');
+    homepage.click('@signInBtn');
+    homepage.waitForElementVisible('@sideDrawer');
+    browser.end();
 
-  // },
+  },
   'it should fail sign in because of invalid password': async (browser: NightwatchBrowser) => {
     const homepage = browser.page.homepage() as EnhancedPageObject;
     homepage.waitForElementVisible('@appContainer');
