@@ -17,8 +17,8 @@ steps:
     action: 'Run services'
     detached: true
 - script: |
-    docker exec -ti vuejs-frontend npm run test:unit
+    docker exec vuejs-frontend npm run test:unit
   displayName: 'Client tests: Run unit tests'
 - script: |
-    docker exec -ti vuejs-frontend npm run test:e2e
+    docker exec vuejs-frontend npm run test:e2e
   displayName: 'Client tests: Run e2e tests'
