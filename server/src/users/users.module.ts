@@ -1,6 +1,4 @@
 import { MailModule } from './../mail/mail.module';
-import { ConfigService } from './../config/config.service';
-import { ConfigModule } from './../config/config.module';
 import { AuthModule } from './../auth/auth.module';
 import { Module, forwardRef } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -14,7 +12,7 @@ import { UserSchema } from './user.schema';
     MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
     PassportModule.register({ defaultStrategy: 'jwt', session: false }),
     forwardRef(() => AuthModule),
-    MailModule
+    forwardRef(() => MailModule),
   ],
   exports: [UsersService],
   controllers: [UsersController],

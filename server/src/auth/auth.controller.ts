@@ -7,7 +7,6 @@ import { LoginUserDto } from '../users/dto/login-user.dto'
 export class AuthController {
     private logger = new Logger('AuthController');
     constructor(private authService: AuthService) {
-
     }
 
     /**

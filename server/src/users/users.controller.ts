@@ -1,9 +1,6 @@
 import { OldPasswordIsIncorrectException } from './../exceptions/OldPasswordIncorrectException';
 import { UpdatePasswordDto } from './dto/update-password.dto';
-import { AuthService } from './../auth/auth.service';
-import { User } from './user.interface';
-import { UserJwt } from './decorators/email.decorator';
-import { Controller, Get, Post, Body, UseGuards, Req, HttpException, HttpStatus, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Query } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -13,7 +10,6 @@ export class UsersController {
 
     constructor(
         private usersService: UsersService) {
-
     }
 
     @Post('/register')

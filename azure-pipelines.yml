@@ -29,3 +29,6 @@ steps:
     npm run test:e2e
     cd ..
   displayName: 'Client tests: Run e2e tests'
+- script: |
+    docker exec nestjs-backend npm run test
+  displayName: 'Backend tests: Run jest tests'

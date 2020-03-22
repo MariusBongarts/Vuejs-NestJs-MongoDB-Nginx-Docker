@@ -1,3 +1,4 @@
+import { ModuleRef } from '@nestjs/core';
 import { EmailNotConfirmedException } from './../exceptions/EmailNotConfirmedException';
 import { InvalidEmailOrPasswordException } from './../exceptions/InvalidEmailOrPasswordException';
 import { CreateUserDto } from './../users/dto/create-user.dto';
@@ -10,9 +11,16 @@ import { JwtPayload } from './interfaces/jwt-payload.interface';
 @Injectable()
 export class AuthService {
     private logger = new Logger('AuthService');
-    constructor(private usersService: UsersService, private jwtService: JwtService) {
+    private jwtService: JwtService;
 
+    constructor(private usersService: UsersService,
+        private readonly moduleRef: ModuleRef
+        ) {
     }
+
+    onModuleInit() {
+        this.jwtService = this.moduleRef.get(JwtService, { strict: false });
+      }
 
     async validateUserByPassword(loginAttempt: LoginUserDto, isFirstLogin: boolean) {
 

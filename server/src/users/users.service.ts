@@ -13,27 +13,31 @@ import { CreateUserDto } from './dto/create-user.dto';
 export class UsersService {
   private logger = new Logger('UsersService');
   private authService: AuthService;
+  private mailService: MailService;
 
   constructor(
     @InjectModel('User') private userModel: Model<User>,
-    private configService: ConfigService,
-    private readonly moduleRef: ModuleRef,
-    private mailService: MailService
+    private readonly moduleRef: ModuleRef
   ) { }
 
   onModuleInit() {
     this.authService = this.moduleRef.get(AuthService, { strict: false });
+    this.mailService = this.moduleRef.get(MailService, { strict: false });
   }
 
   async create(createUserDto: CreateUserDto) {
     // Set this to false if you want to enable email activation
     createUserDto.activated = true;
     const createdUser = new this.userModel(createUserDto);
-    await createdUser.save().catch(error => {
+    await createdUser.save().catch(() => {
       this.logger.log(`FAIL: Registration of Email ${createUserDto.email} failed because it is already registered!`);
       throw new EmailAlreadyRegisteredException();
     });
-    await this.mailService.sendActivationLink(createUserDto.email);
+
+    // Only send email if activation of user is set to false
+    if (!createUserDto.activated) {
+      await this.mailService.sendActivationLink(createUserDto.email);
+    }
     this.logger.log(`SUCCESSS: Registration of new user ${createUserDto.email}!`);
     return await this.authService.validateUserByPassword(createUserDto, true);
   }
@@ -77,7 +81,7 @@ export class UsersService {
   }
 
   async sendForgotEmailPassword(email: string) {
-    await this.mailService.sendForgotEmailPassword(email);
+    //await this.mailService.sendForgotEmailPassword(email);
     this.logger.log(`Succeed: Reset password link sent to ${email}`);
   }
 

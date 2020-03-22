@@ -12,7 +12,7 @@ import { NodemailerOptions } from '@crowdlinker/nestjs-mailer';
   imports: [
     ConfigModule,
     forwardRef(() => ActivationModule),
-    PasswordResetModule,
+    forwardRef(() => PasswordResetModule),
     NodemailerModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) =>
