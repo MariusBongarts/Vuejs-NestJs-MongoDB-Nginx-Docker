@@ -3,17 +3,21 @@
     <div class="form">
       <md-field>
         <label>{{ $t('LandingPageAuthSignIn.email') }}</label>
-        <md-input v-model="loginData.email" autofocus></md-input>
+        <md-input v-model="loginData.email" autofocus type="email"></md-input>
       </md-field>
 
       <md-field md-has-password>
-        <label>{{ $t('LandingPageAuthSignIn.login') }}</label>
+        <label>{{ $t('LandingPageAuthSignIn.password') }}</label>
         <md-input v-model="loginData.password" type="password"></md-input>
       </md-field>
-      <span class="md-error" v-if="error">{{ error }}</span>
+
+      <!-- Errors -->
+      <span class="md-error" v-for="(error, index) in errors" :key="index">{{ error }} <br /></span>
+
       <div class="actions">
-        <a class="reset-password">{{ $t('LandingPageAuthSignIn.resetPassword') }}</a>
-        <md-button class="md-raised md-primary" @click="auth">{{ $t('LandingPageAuth.signUp') }}</md-button>
+        <md-button class="md-raised md-primary sign-up-button" @click="auth">{{
+          $t('LandingPageAuth.signUp')
+        }}</md-button>
       </div>
     </div>
 
@@ -26,6 +30,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import AuthService from '../services/AuthService';
+import { getHttpErrors } from '../helper/getHttpErrors';
 import { SignUpUserDto } from '../models/SignUpUserDto';
 
 @Component({
@@ -40,14 +45,15 @@ export default class LandingPageAuthSignUp extends Vue {
     email: '',
     password: ''
   };
-  error = '';
+  errors: string[] = [];
 
   async auth() {
+    this.errors = [];
     this.loading = true;
     try {
       await this.authService.signUp(this.loginData);
     } catch (error) {
-      this.error = error.error;
+      this.errors = getHttpErrors(error);
       this.loading = false;
     }
   }
@@ -60,8 +66,9 @@ export default class LandingPageAuthSignUp extends Vue {
   .form {
     .actions {
       display: flex;
-      justify-content: space-between;
-      margin-top: 30px;
+      .sign-up-button {
+        margin-left: auto;
+      }
     }
     input {
       background-color: none;

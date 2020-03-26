@@ -77,6 +77,10 @@ export default class Navigation extends Vue {
   }
 }
 
+.md-toolbar {
+  min-height: 55px;
+}
+
 .md-app {
   height: 100%;
   border-radius: 8px;

@@ -10,7 +10,10 @@
         <label>{{ $t('LandingPageAuthSignIn.login') }}</label>
         <md-input id="password" name="password" v-model="loginData.password" type="password"></md-input>
       </md-field>
-      <span class="md-error" v-if="error">{{ error }}</span>
+
+      <!-- Errors -->
+      <span class="md-error" v-for="(error, index) in errors" :key="index">{{ error }} <br /></span>
+
       <div class="actions">
         <a class="reset-password">{{ $t('LandingPageAuthSignIn.resetPassword') }}</a>
         <md-button class="md-raised md-primary" @click="auth">{{ $t('LandingPageAuthSignIn.login') }}</md-button>
@@ -27,6 +30,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import AuthService from '../services/AuthService';
 import { LoginUserDto } from '../models/LoginUserDto';
+import { getHttpErrors } from '../helper/getHttpErrors';
 
 @Component({
   components: {}
@@ -40,14 +44,14 @@ export default class LandingPageAuthSignIn extends Vue {
     email: '',
     password: ''
   };
-  error = '';
+  errors: string[] = [];
 
   async auth() {
     this.loading = true;
     try {
       await this.authService.login(this.loginData);
     } catch (error) {
-      this.error = error.error;
+      this.errors = getHttpErrors(error);
       this.loading = false;
     }
   }

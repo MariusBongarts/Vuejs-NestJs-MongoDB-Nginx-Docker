@@ -1,4 +1,4 @@
-export class LoginUserDto {
-    readonly email: string;
-    readonly password: string;
+import { EmailPassword } from './EmailPassword';
+
+export class LoginUserDto extends EmailPassword {
 }

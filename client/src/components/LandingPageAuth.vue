@@ -45,6 +45,7 @@ export default class LandingPageAuth extends Vue {
 }
 .md-dialog {
   padding: 0px;
+  min-width: 200px;
 
   .close-button {
     cursor: pointer;
@@ -61,7 +62,7 @@ export default class LandingPageAuth extends Vue {
 }
 
 .md-tab {
-  padding: 50px 20px;
+  padding: 20px;
 }
 
 .login-button {
