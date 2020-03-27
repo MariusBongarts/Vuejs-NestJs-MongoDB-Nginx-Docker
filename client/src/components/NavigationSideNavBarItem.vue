@@ -1,7 +1,7 @@
 <template>
     <md-list-item :to="navItem.path">
       <md-icon>{{ navItem.icon }}</md-icon>
-      <span class="md-list-item-text">{{ navItem.name }}</span>
+      <span class="md-list-item-text">{{ $t(navItem.name) }}</span>
     </md-list-item>
 </template>
 

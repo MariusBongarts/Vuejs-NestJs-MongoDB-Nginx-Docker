@@ -3,7 +3,7 @@ export class EmailNotConfirmedException extends HttpException {
   constructor() {
     super({
       status: HttpStatus.UNAUTHORIZED,
-      error: 'Email is not confirmed yet!',
+      message: 'ERRORS.HTTPERRORS.EmailNotConfirmedException',
     }, 401);
 
   }

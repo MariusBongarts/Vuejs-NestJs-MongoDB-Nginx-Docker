@@ -3,7 +3,7 @@ export class OldPasswordIsIncorrectException extends HttpException {
   constructor() {
     super({
       status: HttpStatus.UNAUTHORIZED,
-      error: 'Old Password is incorrect!',
+      message: 'ERRORS.HTTPERRORS.OldPasswordIsIncorrectException',
     }, 401);
 
   }

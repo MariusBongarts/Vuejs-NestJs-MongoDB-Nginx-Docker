@@ -6,25 +6,25 @@ export const CONSTANTS = {
     {
       path: '/home',
       icon: 'dashboard',
-      name: i18n.t('navigation.home'),
+      name: 'navigation.home',
       subNavs: []
     },
     {
       path: '/calendar',
       icon: 'calendar_today',
-      name: i18n.t('navigation.calendar'),
+      name: 'navigation.calendar',
       subNavs: []
     },
     {
       path: '/customers',
       icon: 'people',
-      name: i18n.t('navigation.customers'),
+      name: 'navigation.customers',
       subNavs: []
     },
     {
       path: '/company',
       icon: 'house',
-      name: i18n.t('navigation.company'),
+      name: 'navigation.company',
       subNavs: []
     }
   ] as NavItem[]

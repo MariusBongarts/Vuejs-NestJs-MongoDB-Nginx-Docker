@@ -18,5 +18,17 @@
   "LandingPageAuth": {
     "signUp": "Registrieren",
     "signIn": "Login"
+  },
+  "ERRORS": {
+    "HTTPERRORS": {
+      "InvalidEmailOrPasswordException": "Ungültige E-Mail oder Passwort!",
+      "EmailNotConfirmedException": "Email wurde noch nicht bestätigt!",
+      "EmailAlreadyRegisteredException": "Email ist bereits registriert!",
+      "OldPasswordIsIncorrectException": "Das alte Password ist ungültig!"
+    },
+    "CONSTRAINTS": {
+      "isEmail": "Bitte gib eine korrekte Email ein!",
+      "isNotEmpty": "Felder dürfen nicht leer sein!"
+    }
   }
 }

@@ -3,7 +3,7 @@ export class EmailAlreadyRegisteredException extends HttpException {
   constructor() {
     super({
       status: HttpStatus.UNAUTHORIZED,
-      error: 'Email is already registered!',
+      message: 'ERRORS.HTTPERRORS.EmailAlreadyRegisteredException',
     }, 400);
 
   }

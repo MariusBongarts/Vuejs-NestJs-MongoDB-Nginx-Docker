@@ -12,7 +12,9 @@
       </md-field>
 
       <!-- Errors -->
-      <span class="md-error" v-for="(error, index) in errors" :key="index">{{ error }} <br /></span>
+      <span class="md-error" v-for="(error, index) in errors" :key="index"
+        >{{ $t(`${error}`) }}<br
+      /></span>
 
       <div class="actions">
         <md-button class="md-raised md-primary sign-up-button" @click="auth">{{

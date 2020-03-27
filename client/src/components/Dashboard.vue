@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import {changeLanguage} from './../helper/i18n.service';
 
 @Component({
   components: {}

@@ -8,15 +8,24 @@
 
       <md-field md-has-password>
         <label>{{ $t('LandingPageAuthSignIn.login') }}</label>
-        <md-input id="password" name="password" v-model="loginData.password" type="password"></md-input>
+        <md-input
+          id="password"
+          name="password"
+          v-model="loginData.password"
+          type="password"
+        ></md-input>
       </md-field>
 
       <!-- Errors -->
-      <span class="md-error" v-for="(error, index) in errors" :key="index">{{ error }} <br /></span>
+      <span class="md-error" v-for="(error, index) in errors" :key="index"
+        >{{ $t(error) }}<br
+      /></span>
 
       <div class="actions">
         <a class="reset-password">{{ $t('LandingPageAuthSignIn.resetPassword') }}</a>
-        <md-button class="md-raised md-primary" @click="auth">{{ $t('LandingPageAuthSignIn.login') }}</md-button>
+        <md-button class="md-raised md-primary" @click="auth">{{
+          $t('LandingPageAuthSignIn.login')
+        }}</md-button>
       </div>
     </div>
 

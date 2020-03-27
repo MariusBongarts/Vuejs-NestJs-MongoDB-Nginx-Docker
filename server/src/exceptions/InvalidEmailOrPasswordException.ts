@@ -3,7 +3,7 @@ export class InvalidEmailOrPasswordException extends HttpException {
   constructor() {
     super({
       status: HttpStatus.UNAUTHORIZED,
-      error: 'Invalid email or password!',
+      message: 'ERRORS.HTTPERRORS.InvalidEmailOrPasswordException',
     }, 401);
 
   }
