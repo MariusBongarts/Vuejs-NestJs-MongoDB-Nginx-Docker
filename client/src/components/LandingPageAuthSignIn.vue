@@ -3,21 +3,16 @@
     <div class="form">
       <md-field>
         <label>{{ $t('LandingPageAuthSignIn.email') }}</label>
-        <md-input id="email" name="email" v-model="loginData.email" autofocus></md-input>
+        <md-input name="email" id="emailSignIn" v-model="loginData.email" autofocus></md-input>
       </md-field>
 
       <md-field md-has-password>
-        <label>{{ $t('LandingPageAuthSignIn.login') }}</label>
-        <md-input
-          id="password"
-          name="password"
-          v-model="loginData.password"
-          type="password"
-        ></md-input>
+        <label>{{ $t('LandingPageAuthSignIn.password') }}</label>
+        <md-input name="password" id="passwordSignIn" v-model="loginData.password" type="password"></md-input>
       </md-field>
 
       <!-- Errors -->
-      <span class="md-error" v-for="(error, index) in errors" :key="index"
+      <span class="md-error server-error" v-for="(error, index) in errors" :key="index"
         >{{ $t(error) }}<br
       /></span>
 
@@ -49,6 +44,7 @@ export default class LandingPageAuthSignIn extends Vue {
 
   showDialog = false;
   loading = false;
+
   loginData: LoginUserDto = {
     email: '',
     password: ''

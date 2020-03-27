@@ -17,7 +17,8 @@
   },
   "LandingPageAuth": {
     "signUp": "Registrieren",
-    "signIn": "Login"
+    "signIn": "Login",
+    "repeatPassword": "Passwort wiederholen"
   },
   "ERRORS": {
     "HTTPERRORS": {
@@ -28,7 +29,8 @@
     },
     "CONSTRAINTS": {
       "isEmail": "Bitte gib eine korrekte Email ein!",
-      "isNotEmpty": "Felder dürfen nicht leer sein!"
+      "isNotEmpty": "Felder dürfen nicht leer sein!",
+      "passwordsNotMatch": "Passwörter stimmen nicht überein!"
     }
   }
 }

@@ -17,11 +17,11 @@ module.exports = {
     appContainer: '#app',
     loginBtn: '#app > div > div > button',
     overlay: '.md-overlay.md-fixed.md-dialog-overlay',
-    emailInput: '#email',
-    passwordInput: '#password',
+    emailInput: '#emailSignIn',
+    passwordInput: '#passwordSignIn',
     signInBtn: 'div.actions > button',
     sideDrawer: '.md-app-side-drawer',
-    errorMsg: '.md-error'
+    errorMsg: '.md-error.server-error'
   },
 
   // Or a page objects can also have sections
