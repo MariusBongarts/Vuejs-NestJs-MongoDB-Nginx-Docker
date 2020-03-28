@@ -1,12 +1,13 @@
 @import "~vue-material/dist/theme/engine";
 
 // Change the primary color here: palettes are defined under vue-material/dist/theme/palette.scss
-$primary: md-get-palette-color(lightblue, 400);
+$primary: md-get-palette-color(blue, 400);
 $accent: md-get-palette-color(red, A200);
 $warn: #ff1744;
 
 $primary-gradient: linear-gradient(90deg, lighten($primary, 10%) 0%,  $primary 50%, darken($primary, 10%)  100%);
 
+$mobile: 900px;
 
 .md-error {
   color: $warn;

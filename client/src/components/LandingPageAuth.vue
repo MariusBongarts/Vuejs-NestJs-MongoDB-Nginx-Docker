@@ -1,21 +1,16 @@
 <template>
-  <div class="login-button">
-    <md-dialog :md-active.sync="showDialog">
+  <md-dialog :md-active.sync="showDialog" @md-closed="navigateBack">
+    <!-- Box for background header and closing button -->
+    <div class="header-box">
       <md-icon class="close-button" @click.native="showDialog = false">close</md-icon>
-      <div class="tab-container">
-      <md-tabs md-dynamic-height>
-        <md-tab :md-label="$t('LandingPageAuth.signIn')">
-          <LandingPageAuthSignIn />
-        </md-tab>
-        <md-tab :md-label="$t('LandingPageAuth.signUp')">
-          <LandingPageAuthSignUp />
-        </md-tab>
-      </md-tabs>
-      </div>
-    </md-dialog>
+    </div>
 
-    <md-button class="md-raised md-accent" @click="showDialog = true">{{ $t('LandingPageAuthSignIn.login') }}</md-button>
-  </div>
+    <div class="dialog-container">
+      <div class="tab-container">
+        <router-view />
+      </div>
+    </div>
+  </md-dialog>
 </template>
 
 <script lang="ts">
@@ -30,42 +25,53 @@ import LandingPageAuthSignUp from './LandingPageAuthSignUp.vue';
   }
 })
 export default class LandingPageAuth extends Vue {
-  showDialog = false;
+  showDialog = true;
+
+  /**
+   * Navigate back to landing page when dialog closes
+   */
+  async navigateBack() {
+    await this.$router.push({ name: 'landing' });
+  }
 }
 </script>
 
 <style scoped lang="scss">
+@import './src/theme/variables.scss';
 
-.tab-container {
-  // Necesarry because otherwise tabs were wider tha screen on mobile screens
-  max-width: 100vw;
+.dialog-container > * {
+  margin-top: 10px;
 }
-.md-dialog {
-  max-width: 100vw;
-}
-.md-dialog {
-  padding: 0px;
-  min-width: 200px;
 
-  .close-button {
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 2;
+.dialog-container {
+  max-width: 100vw;
+  overflow: scroll;
+  padding: 20px 0px;
+}
+
+.dialog-container::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: $mobile) {
+  .dialog-container {
+    padding: 20px 30px;
   }
 }
 
-.md-tabs {
+.header-box {
+  background: $primary-gradient;
+  height: 40px;
   display: flex;
-  max-width: 100%;
-}
+  justify-content: flex-end;
+  width: 100%;
 
-.md-tab {
-  padding: 20px;
-}
-
-.login-button {
-  margin: auto;
+  .close-button {
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+  }
 }
 </style>

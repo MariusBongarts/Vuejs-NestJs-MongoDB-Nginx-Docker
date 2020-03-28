@@ -41,7 +41,24 @@ const routes = [
     path: '/',
     name: 'landing',
     // Lazy loading of component when route is visited
-    component: () => import(/* webpackChunkName: "about" */ '../views/LandingPage.vue'),
+    component: () => import('../views/LandingPage.vue'),
+    children: [{
+      path: '/auth',
+      name: '/auth',
+      component: () => import('../components/LandingPageAuth.vue'),
+      children: [
+        {
+          path: 'sign-in',
+          name: 'sign-in',
+          component: () => import('../components/LandingPageAuthSignIn.vue'),
+        },
+        {
+          path: 'sign-up',
+          name: 'sign-up',
+          component: () => import('../components/LandingPageAuthSignUp.vue'),
+        }
+      ]
+    }]
   },
 ];
 
@@ -55,10 +72,10 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   try {
     // If user is loggedIn but navigates to login or root
-    if ((to.path === '/' || to.path === '/login') && localStorage.jwtSkeleton) next('/home');
+    if ((to.path === '/' || to.path.startsWith('/auth')) && localStorage.jwtSkeleton) next('/home');
 
     // If user is not loggedIn
-    if ((to.path === '/' || to.path === '/login') && !localStorage.jwtSkeleton) {
+    if ((to.path === '/' || to.path.startsWith('/auth')) && !localStorage.jwtSkeleton) {
       store.commit('emitLogout');
       next();
     } else localStorage.jwtSkeleton ? next() : next('/');

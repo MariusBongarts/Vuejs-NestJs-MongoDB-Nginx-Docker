@@ -70,7 +70,7 @@ export default class Navigation extends Vue {
 <style lang="scss" scoped>
 @import './src/theme/variables.scss';
 
-@media (min-width: 900px) {
+@media (min-width: $mobile) {
   .page-container {
     padding: 10px;
     background: $primary-gradient;

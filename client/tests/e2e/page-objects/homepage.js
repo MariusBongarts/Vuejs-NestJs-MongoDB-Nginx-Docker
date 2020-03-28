@@ -15,7 +15,7 @@ module.exports = {
   // A page object can have elements
   elements: {
     appContainer: '#app',
-    loginBtn: '#app > div > div > button',
+    loginBtn: '#getStartedBtn',
     overlay: '.md-overlay.md-fixed.md-dialog-overlay',
     emailInput: '#emailSignIn',
     passwordInput: '#passwordSignIn',

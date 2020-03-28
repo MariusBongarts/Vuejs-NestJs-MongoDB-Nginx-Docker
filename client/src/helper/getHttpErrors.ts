@@ -6,7 +6,7 @@
  * @param {*} httpError
  * @returns
  */
-export function getHttpErrors(httpError: any) {
+export function getHttpErrors(httpError) {
   const errors: string[] = [];
   try {
     httpError.message.forEach(message => {

@@ -1,6 +1,22 @@
 <template>
   <div class="page-container">
-    <LandingPageAuth />
+    <!-- <LandingPageAuth /> -->
+    <div class="landing-info-container">
+      <span class="md-headline">Vuejs + Nestjs Skeleton</span>
+      <span class="md-subheading"
+        >This project provides a skeleton to build a response WebApp with authorization</span
+      >
+      <md-divider></md-divider>
+
+      <!-- Get started -->
+      <router-link to="auth/sign-in"
+        ><md-button class="md-raised md-accent" id="getStartedBtn"
+          >Get started</md-button
+        ></router-link
+      >
+    </div>
+
+    <router-view />
   </div>
 </template>
 
@@ -37,10 +53,22 @@ export default class LandingPage extends Vue {
 @import './src/theme/variables.scss';
 
 .page-container {
-  height: 100vh;
+  align-items: center;
   background: $primary-gradient;
+  color: white;
   display: flex;
+  height: 100vh;
   justify-content: center;
 }
 
+.landing-info-container > * {
+  display: block;
+  margin: 10px 0px;
+  max-width: 400px;
+}
+
+#getStartedBtn {
+  font-size: 0.8em;
+  padding: 10px;
+}
 </style>

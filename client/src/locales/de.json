@@ -16,9 +16,11 @@
     "logout": "Ausloggen"
   },
   "LandingPageAuth": {
-    "signUp": "Registrieren",
+    "signUp": "Konto erstellen",
     "signIn": "Login",
-    "repeatPassword": "Passwort wiederholen"
+    "repeatPassword": "Passwort wiederholen",
+    "ALREADYREGISTERED": "Bereits registriert?",
+    "NOTREGISTEREDYET": "Noch kein Konto?"
   },
   "ERRORS": {
     "HTTPERRORS": {

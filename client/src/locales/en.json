@@ -16,9 +16,11 @@
     "logout": "Logout"
   },
   "LandingPageAuth": {
-    "signUp": "Sign Up",
+    "signUp": "Create Account",
     "signIn": "Sign In",
-    "repeatPassword": "Repeat password"
+    "repeatPassword": "Repeat password",
+    "ALREADYREGISTERED": "Already registered?",
+    "NOTREGISTEREDYET": "Not registered yet?"
   },
   "ERRORS": {
     "HTTPERRORS": {

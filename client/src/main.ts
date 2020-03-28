@@ -4,7 +4,7 @@ import {
   MdContent, MdIcon, MdList, MdToolbar,
   MdButton, MdDrawer, MdApp, MdAvatar,
   MdRipple, MdMenu, MdDialog, MdDialogPrompt,
-  MdField, MdTabs, MdProgress
+  MdField, MdTabs, MdProgress, MdDivider
 } from 'vue-material/dist/components';
 import Vue from 'vue';
 // import VueMaterial from 'vue-material';
@@ -33,6 +33,7 @@ Vue.use(MdDialog);
 Vue.use(MdDialogPrompt);
 Vue.use(MdTabs);
 Vue.use(MdProgress);
+Vue.use(MdDivider)
 // Vue.use(VueMaterial);
 
 Vue.config.productionTip = false;
