@@ -47,7 +47,6 @@ module.exports = {
     homepage.waitForElementVisible('@errorMsg');
     homepage.expect.element('@errorMsg').text.to.equal("Invalid email or password!");
     browser.end();
-
   },
 
 };
