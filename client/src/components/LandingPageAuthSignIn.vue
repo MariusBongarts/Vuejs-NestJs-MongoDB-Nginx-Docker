@@ -17,11 +17,12 @@
     <md-field md-has-password :class="getValidationClass('password')">
       <label>{{ $t('LandingPageAuthSignIn.password') }}</label>
       <md-input name="password" id="passwordSignIn" v-model="password" type="password"></md-input>
+      <!-- Error missing password -->
+      <span class="md-error" v-if="!$v.password.required"
+        >{{ $t('LandingPageAuthSignIn.password') }}
+        {{ $t('ERRORS.CONSTRAINTS.FIELDREQUIRED') }}</span
+      >
     </md-field>
-    <!-- Error missing password -->
-    <span class="md-error" v-if="!$v.password.required"
-      >{{ $t('LandingPageAuthSignIn.password') }} {{ $t('ERRORS.CONSTRAINTS.FIELDREQUIRED') }}</span
-    >
 
     <!-- Server Errors -->
     <span class="md-error server-error" v-for="(error, index) in errors" :key="index"
