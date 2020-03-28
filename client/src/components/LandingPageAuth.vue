@@ -6,9 +6,7 @@
     </div>
 
     <div class="dialog-container">
-      <div class="tab-container">
         <router-view />
-      </div>
     </div>
   </md-dialog>
 </template>

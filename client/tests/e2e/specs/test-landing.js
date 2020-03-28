@@ -45,12 +45,24 @@ exports.__esModule = true;
 // //////////////////////////////////////////////////////////////
 module.exports = {
     beforeEach: function (browser) { return browser.init(); },
-    'it should render landing page': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
-        var homepage;
+    'it should render components of landing page': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
+        var LandingPage;
         return __generator(this, function (_a) {
-            homepage = browser.page.homepage();
-            homepage.waitForElementVisible('@appContainer');
-            homepage.waitForElementVisible('@loginBtn');
+            LandingPage = browser.page.LandingPage();
+            LandingPage.waitForElementVisible('@appContainer');
+            LandingPage.waitForElementVisible('@getStartedBtn');
+            LandingPage.waitForElementVisible('@infoContainer');
+            return [2 /*return*/];
+        });
+    }); },
+    'it should navigate to /auth/sign-in after clicking getStarted button': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
+        var LandingPage, LandingPageAuthSignIn;
+        return __generator(this, function (_a) {
+            LandingPage = browser.page.LandingPage();
+            LandingPage.waitForElementVisible('@getStartedBtn');
+            LandingPage.click('@getStartedBtn');
+            LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn();
+            LandingPageAuthSignIn.waitForElementVisible('@container');
             return [2 /*return*/];
         });
     }); }

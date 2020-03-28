@@ -36,62 +36,91 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
+var constants_1 = require("./constants/constants");
 module.exports = {
-    beforeEach: function (browser) { return browser.init(); },
-    'it should sign in successfully': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
-        var homepage;
-        return __generator(this, function (_a) {
-            homepage = browser.page.homepage();
-            homepage.waitForElementVisible('@appContainer');
-            homepage.waitForElementVisible('@loginBtn');
-            homepage.click('@loginBtn');
-            homepage.waitForElementVisible('@overlay');
-            homepage.waitForElementVisible('@emailInput');
-            homepage.waitForElementVisible('@passwordInput');
-            homepage.setValue('@emailInput', 'admin@skeleton.de');
-            homepage.setValue('@passwordInput', 'MariusBongarts');
-            homepage.click('@signInBtn');
-            homepage.waitForElementVisible('@sideDrawer');
-            browser.end();
-            return [2 /*return*/];
-        });
-    }); },
+    beforeEach: function (browser) {
+        browser.init();
+        var LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn();
+        LandingPageAuthSignIn.navigate(LandingPageAuthSignIn['url']);
+    },
+    'it should render overlay': function (browser) {
+        var LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn();
+        LandingPageAuthSignIn.waitForElementVisible('@overlay');
+    },
+    'it should sign in successfully': function (browser) {
+        signIn(browser, constants_1.CONSTANTS.VALIDEMAIL, constants_1.CONSTANTS.VALIDPASSWORD);
+        var App = browser.page.App();
+        App.waitForElementVisible('@container');
+        browser.end();
+    },
     'it should fail sign in because of invalid password': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
-        var homepage;
+        var LandingPageAuthSignIn;
         return __generator(this, function (_a) {
-            homepage = browser.page.homepage();
-            homepage.waitForElementVisible('@appContainer');
-            homepage.waitForElementVisible('@loginBtn');
-            homepage.click('@loginBtn');
-            homepage.waitForElementVisible('@overlay');
-            homepage.waitForElementVisible('@emailInput');
-            homepage.waitForElementVisible('@passwordInput');
-            homepage.setValue('@emailInput', 'admin@skeleton.de');
-            homepage.setValue('@passwordInput', 'InvalidPassword');
-            homepage.click('@signInBtn');
-            homepage.waitForElementVisible('@errorMsg');
-            homepage.expect.element('@errorMsg').text.to.equal("Invalid email or password!");
+            LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn();
+            signIn(browser, constants_1.CONSTANTS.VALIDEMAIL, constants_1.CONSTANTS.INVALIDPASSWORD);
+            LandingPageAuthSignIn.waitForElementVisible('@errorMsg');
+            LandingPageAuthSignIn.expect.element('@errorMsg').text.to.equal("Invalid email or password!");
             browser.end();
             return [2 /*return*/];
         });
     }); },
     'it should fail sign in because of invalid email': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
-        var homepage;
+        var LandingPageAuthSignIn;
         return __generator(this, function (_a) {
-            homepage = browser.page.homepage();
-            homepage.waitForElementVisible('@appContainer');
-            homepage.waitForElementVisible('@loginBtn');
-            homepage.click('@loginBtn');
-            homepage.waitForElementVisible('@overlay');
-            homepage.waitForElementVisible('@emailInput');
-            homepage.waitForElementVisible('@passwordInput');
-            homepage.setValue('@emailInput', 'Invalid@email.de');
-            homepage.setValue('@passwordInput', 'MariusBongarts');
-            homepage.click('@signInBtn');
-            homepage.waitForElementVisible('@errorMsg');
-            homepage.expect.element('@errorMsg').text.to.equal("Invalid email or password!");
+            LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn();
+            signIn(browser, constants_1.CONSTANTS.INVALIDEMAIL, constants_1.CONSTANTS.VALIDPASSWORD);
+            LandingPageAuthSignIn.waitForElementVisible('@errorMsg');
+            LandingPageAuthSignIn.expect.element('@errorMsg').text.to.equal("Invalid email or password!");
+            browser.end();
+            return [2 /*return*/];
+        });
+    }); },
+    'it should not show md-errors in sign in form before filling out form': function (browser) {
+        var LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn();
+        LandingPageAuthSignIn.expect.element('@emailRequired').not.to.be.visible;
+        LandingPageAuthSignIn.expect.element('@emailInvalid').not.to.be.present;
+        LandingPageAuthSignIn.expect.element('@passwordRequired').not.to.be.visible;
+    },
+    'it should supress sign in because of constraints and show .md-errors': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
+        var LandingPageAuthSignIn;
+        return __generator(this, function (_a) {
+            LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn();
+            signIn(browser, '', '');
+            LandingPageAuthSignIn.waitForElementVisible('@emailRequired');
+            LandingPageAuthSignIn.waitForElementVisible('@passwordRequired');
+            LandingPageAuthSignIn.expect.element('@emailRequired').text.to.equal("E-Mail is required");
+            LandingPageAuthSignIn.expect.element('@passwordRequired').text.to.equal("Password is required");
+            LandingPageAuthSignIn.sendKeys('@emailInput', 'invalidEmail@web.d');
+            LandingPageAuthSignIn.expect.element('@emailInvalid').text.to.equal("Please enter a valid email!");
+            LandingPageAuthSignIn.clearValue('@emailInput');
+            LandingPageAuthSignIn.sendKeys('@emailInput', constants_1.CONSTANTS.VALIDEMAIL);
+            LandingPageAuthSignIn.sendKeys('@passwordInput', constants_1.CONSTANTS.VALIDPASSWORD);
+            LandingPageAuthSignIn.expect.element('@emailRequired').not.to.be.present;
+            LandingPageAuthSignIn.expect.element('@emailInvalid').not.to.be.present;
+            LandingPageAuthSignIn.expect.element('@passwordRequired').not.to.be.present;
+            browser.end();
+            return [2 /*return*/];
+        });
+    }); },
+    'it should navigate to sign-up': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
+        var LandingPageAuthSignIn, LandingPageAuthSignUp;
+        return __generator(this, function (_a) {
+            LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn();
+            LandingPageAuthSignIn.click('@signUpBtn');
+            LandingPageAuthSignUp = browser.page.LandingPageAuthSignUp();
+            LandingPageAuthSignUp.waitForElementVisible('@container');
             browser.end();
             return [2 /*return*/];
         });
     }); }
 };
+function signIn(browser, email, password) {
+    var LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn();
+    LandingPageAuthSignIn.waitForElementVisible('@container');
+    LandingPageAuthSignIn.waitForElementVisible('@emailInput');
+    LandingPageAuthSignIn.waitForElementVisible('@passwordInput');
+    LandingPageAuthSignIn.sendKeys('@emailInput', email);
+    LandingPageAuthSignIn.sendKeys('@passwordInput', password);
+    LandingPageAuthSignIn.click('@signInBtn');
+}
+exports.signIn = signIn;

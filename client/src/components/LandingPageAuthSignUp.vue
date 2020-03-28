@@ -1,15 +1,15 @@
 <template>
-  <div class="sign-in-container">
+  <div class="sign-up-container">
     <!-- Email form field -->
     <md-field :class="getValidationClass('email')">
       <label>{{ $t('LandingPageAuthSignIn.email') }}</label>
       <md-input v-model="email" autofocus type="email" name="email" id="emailSignUp"></md-input>
-      <!-- Error required -->
-      <span class="md-error" v-if="!$v.email.required"
+      <!-- Error email required -->
+      <span class="md-error missing-email" v-if="!$v.email.required"
         >{{ $t('LandingPageAuthSignIn.email') }} {{ $t('ERRORS.CONSTRAINTS.FIELDREQUIRED') }}</span
       >
       <!-- Error invalid email -->
-      <span class="md-error" v-if="!$v.email.email"> {{ $t('ERRORS.CONSTRAINTS.isEmail') }}</span>
+      <span class="md-error invalid-email" v-if="!$v.email.email"> {{ $t('ERRORS.CONSTRAINTS.isEmail') }}</span>
     </md-field>
 
     <!-- Password form field -->
@@ -17,7 +17,7 @@
       <label>{{ $t('LandingPageAuthSignIn.password') }}</label>
       <md-input v-model="password" type="password" name="password" id="passwordSignUp"></md-input>
       <!-- Error missing password -->
-      <span class="md-error" v-if="!$v.password.required"
+      <span class="md-error missing-password" v-if="!$v.password.required"
         >{{ $t('LandingPageAuthSignIn.password') }}
         {{ $t('ERRORS.CONSTRAINTS.FIELDREQUIRED') }}</span
       >
@@ -33,13 +33,13 @@
         id="passwordRepeatSignUp"
       ></md-input>
       <!-- Passwords do not match -->
-      <span class="md-error" v-if="!$v.passwordRepeat.sameAs">
+      <span class="md-error not-match-password" v-if="!$v.passwordRepeat.sameAs">
         {{ $t('ERRORS.CONSTRAINTS.passwordsNotMatch') }}</span
       >
     </md-field>
 
     <!-- Errors from server -->
-    <span class="md-error" v-for="(error, index) in errors" :key="index"
+    <span class="md-error server-error" v-for="(error, index) in errors" :key="index"
       >{{ $t(`${error}`) }}<br
     /></span>
 
@@ -53,7 +53,7 @@
         <span class="md-caption">{{ $t('LandingPageAuth.ALREADYREGISTERED') }}</span>
       </div>
 
-      <router-link tag="md-button" to="sign-in" class="md-raised md-accent">{{ $t('LandingPageAuth.signIn') }}</router-link>
+      <router-link tag="md-button" to="sign-in" class="md-raised md-accent sign-in-route-btn">{{ $t('LandingPageAuth.signIn') }}</router-link>
     </div>
     <div class="loading-overlay" v-if="loading">
       <md-progress-spinner md-mode="indeterminate" :md-stroke="2"></md-progress-spinner>

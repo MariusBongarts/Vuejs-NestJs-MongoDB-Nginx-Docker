@@ -6,11 +6,11 @@
       <md-input name="email" id="emailSignIn" v-model="email" autofocus></md-input>
 
       <!-- Error email required -->
-      <span class="md-error" v-if="!$v.email.required"
+      <span class="md-error missing-email" v-if="!$v.email.required"
         >{{ $t('LandingPageAuthSignIn.email') }} {{ $t('ERRORS.CONSTRAINTS.FIELDREQUIRED') }}</span
       >
       <!-- Error invalid email -->
-      <span class="md-error" v-if="!$v.email.email"> {{ $t('ERRORS.CONSTRAINTS.isEmail') }}</span>
+      <span class="md-error invalid-email" v-if="!$v.email.email"> {{ $t('ERRORS.CONSTRAINTS.isEmail') }}</span>
     </md-field>
 
     <!-- Password  -->
@@ -18,7 +18,7 @@
       <label>{{ $t('LandingPageAuthSignIn.password') }}</label>
       <md-input name="password" id="passwordSignIn" v-model="password" type="password"></md-input>
       <!-- Error missing password -->
-      <span class="md-error" v-if="!$v.password.required"
+      <span class="md-error missing-password" v-if="!$v.password.required"
         >{{ $t('LandingPageAuthSignIn.password') }}
         {{ $t('ERRORS.CONSTRAINTS.FIELDREQUIRED') }}</span
       >
@@ -40,7 +40,7 @@
         <span class="md-caption">{{ $t('LandingPageAuth.NOTREGISTEREDYET') }}</span>
       </div>
 
-      <router-link tag="md-button" to="sign-up" class="md-raised md-accent">{{
+      <router-link tag="md-button" to="sign-up" class="md-raised md-accent sign-up-route-btn">{{
         $t('LandingPageAuth.signUp')
       }}</router-link>
     </div>
