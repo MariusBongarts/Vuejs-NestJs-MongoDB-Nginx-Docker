@@ -5,7 +5,7 @@
     </md-avatar>
 
     <md-menu-content>
-      <md-menu-item @click="logout">{{ $t('NavigationToolbarMenu.logout') }}</md-menu-item>
+      <md-menu-item class="logout-btn" @click="logout">{{ $t('NavigationToolbarMenu.logout') }}</md-menu-item>
     </md-menu-content>
   </md-menu>
 </template>

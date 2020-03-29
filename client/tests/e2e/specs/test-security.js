@@ -36,26 +36,34 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
+var constants_1 = require("./constants/constants");
 module.exports = {
     beforeEach: function (browser) { return browser.init(); },
-    'it should render components of landing page': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
-        var LandingPage;
+    'it should redirect to landing page when navigating to home because user is not logged in': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
+        var HomePage, LandingPage;
         return __generator(this, function (_a) {
+            HomePage = browser.page.HomePage();
+            HomePage.navigate(HomePage['url']);
+            HomePage.expect.url(function (url) { return url; }).not.to.contain('home');
             LandingPage = browser.page.LandingPage();
-            LandingPage.waitForElementVisible('@appContainer');
             LandingPage.waitForElementVisible('@getStartedBtn');
-            LandingPage.waitForElementVisible('@infoContainer');
             return [2 /*return*/];
         });
     }); },
-    'it should navigate to /auth/sign-in after clicking getStarted button': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
-        var LandingPage, LandingPageAuthSignIn;
+    'it should redirect to landing page after deleting JSON Web Token from localstorage': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
+        var NavBar, HomePage, LandingPage;
         return __generator(this, function (_a) {
+            NavBar = browser.page.NavBar();
+            browser.page.LandingPageAuthSignIn().signIn(constants_1.CONSTANTS.VALIDEMAIL, constants_1.CONSTANTS.VALIDPASSWORD);
+            // Wait for localStorage to be set from sign in
+            browser.pause(1000);
+            browser.execute(function () { return localStorage.clear(); });
+            NavBar.waitForElementVisible('@calendarNavItem');
+            NavBar.click('@calendarNavItem');
+            HomePage = browser.page.HomePage();
+            HomePage.expect.url(function (url) { return url; }).not.to.contain('calendar');
             LandingPage = browser.page.LandingPage();
             LandingPage.waitForElementVisible('@getStartedBtn');
-            LandingPage.click('@getStartedBtn');
-            LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn();
-            LandingPageAuthSignIn.waitForElementVisible('@container');
             return [2 /*return*/];
         });
     }); }

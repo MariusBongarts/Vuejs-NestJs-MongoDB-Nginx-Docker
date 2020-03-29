@@ -8,9 +8,19 @@
  *   https://nightwatchjs.org/guide/working-with-page-objects/
  *
  */
+const commands = {
+  signIn(email, password) {
+    return this
+      .navigate(this.url)
+      .sendKeys('@emailInput', email)
+      .sendKeys('@passwordInput', password)
+      .click('@signInBtn');
+  }
+};
+
 module.exports = {
   url: '/auth/sign-in',
-  commands: [],
+  commands: [commands],
   elements: {
     container: '.sign-in-container',
     emailInput: '#emailSignIn',
