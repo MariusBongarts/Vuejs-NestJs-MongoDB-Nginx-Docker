@@ -1,0 +1,538 @@
+{
+	"info": {
+		"_postman_id": "ec8cb4b7-94d8-433a-9264-9b32c2c81270",
+		"name": "NestJsServer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "It should throw EmailAlreadyExist Exception",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "98a3c635-8586-47fe-9d04-e00577a9bc71",
+						"exec": [
+							"var jwt = pm.response.json(); ",
+							"postman.setEnvironmentVariable(\"token\", jwt.token);",
+							"",
+							"pm.test(\"It should have status code 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"It should throw EmailAlreadyRegisteredException\", function () {",
+							"    pm.expect(pm.response.json().message).to.eql(\"ERRORS.HTTPERRORS.EmailAlreadyRegisteredException\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"{{validEmail}}\", \"password\": \"{{validPassword}}\" }"
+				},
+				"url": {
+					"raw": "{{url}}/users/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "It should successfully create new user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "98a3c635-8586-47fe-9d04-e00577a9bc71",
+						"exec": [
+							"var jwt = pm.response.json(); ",
+							"postman.setEnvironmentVariable(\"token\", jwt.token);",
+							"",
+							"pm.test(\"It should have status code 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"It should return a JSON web token as JSON Object\", function () {",
+							"    pm.response.json().expiresIn.length > 10;",
+							"    pm.response.json().token.length > 10;",
+							"});",
+							"",
+							"pm.test(\"It should return email in decoded JSON Web Token\", function () {",
+							"    newEmail = jwt_decode(pm.response.text())",
+							"    pm.expect(environment.newEmail).to.eql(newEmail.email);",
+							"});",
+							"",
+							" function jwt_decode(a) {",
+							"    var parts = a.split('.'); // header, payload, signature",
+							"    return JSON.parse(atob(parts[1]));",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"{{newEmail}}\", \"password\": \"{{newPassword}}\" }"
+				},
+				"url": {
+					"raw": "{{url}}/users/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "It should successfully login with new user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe74ebe9-359a-4cef-b1fd-064408a836c5",
+						"exec": [
+							"var jwt = pm.response.json(); ",
+							"postman.setEnvironmentVariable(\"token\", jwt.token);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"{{newEmail}}\", \"password\": \"{{newPassword}}\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "It should successfully delete a user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50910039-9ebe-41bb-aaad-b2c4e3d14beb",
+						"exec": [
+							"var jwt = pm.response.json(); ",
+							"postman.setEnvironmentVariable(\"token\", jwt.token);",
+							"",
+							"pm.test(\"It should have status code 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"It should return a deleted object with deletedCount = 1\", function () {",
+							"    const deletedCount = pm.response.json().deletedCount;",
+							"    pm.expect(deletedCount).to.equal(1);",
+							"    ",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/users/account",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "It should fail login with deleted user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dd76fe31-ea28-4a10-bb09-2c1a4adcc57b",
+						"exec": [
+							"var jwt = pm.response.json(); ",
+							"postman.setEnvironmentVariable(\"token\", jwt.token);",
+							"",
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"It should throw InvalidEmailOrPasswordException\", function () {",
+							"    pm.expect(pm.response.json().message).to.eql(\"ERRORS.HTTPERRORS.InvalidEmailOrPasswordException\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"marius@bongarts.net\", \"password\":\"marius@bongarts.net\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "It should login successfully",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dd76fe31-ea28-4a10-bb09-2c1a4adcc57b",
+						"exec": [
+							"var jwt = pm.response.json(); ",
+							"postman.setEnvironmentVariable(\"token\", jwt.token);",
+							"",
+							"pm.test(\"It should have status code 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"It should return a JSON web token as JSON Object\", function () {",
+							"    pm.response.json().expiresIn.length > 10;",
+							"    pm.response.json().token.length > 10;",
+							"});",
+							"",
+							"pm.test(\"It should return email in decoded JSON Web Token\", function () {",
+							"    jwtEmail = jwt_decode(pm.response.text())",
+							"    pm.expect(environment.validEmail).to.eql(jwtEmail.email);",
+							"});",
+							"",
+							" function jwt_decode(a) {",
+							"    var parts = a.split('.'); // header, payload, signature",
+							"    return JSON.parse(atob(parts[1]));",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"{{validEmail}}\", \"password\": \"{{validPassword}}\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "It should throw OlPasswordUsIncorrectException",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8760e1f0-25e5-4c2d-991f-46122c14f3b9",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"It should throw EmailAlreadyRegisteredException\", function () {",
+							"    pm.expect(pm.response.json().message).to.eql(\"ERRORS.HTTPERRORS.OldPasswordIsIncorrectException\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"{{validEmail}}\", \"oldPassword\":\"inValidPassword\", \"newPassword\":\"{{newPassword}}\"}"
+				},
+				"url": {
+					"raw": "{{url}}/users/change-password",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "It should successfully change password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8760e1f0-25e5-4c2d-991f-46122c14f3b9",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"It should return success message\", function () {",
+							"    pm.expect(pm.response.text()).to.eql(\"Successfully changed password!\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"{{validEmail}}\", \"oldPassword\":\"{{validPassword}}\", \"newPassword\":\"{{newPassword}}\"}"
+				},
+				"url": {
+					"raw": "{{url}}/users/change-password",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "It should successfully change password back",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8760e1f0-25e5-4c2d-991f-46122c14f3b9",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"It should return success message\", function () {",
+							"    pm.expect(pm.response.text()).to.eql(\"Successfully changed password!\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"{{validEmail}}\", \"oldPassword\":\"{{newPassword}}\", \"newPassword\":\"{{validPassword}}\"}"
+				},
+				"url": {
+					"raw": "{{url}}/users/change-password",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7ac80a1f-2706-4da9-812d-485e74c980fa",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "464b7da5-6b35-45b5-9159-a3b0f39be987",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "23073325-94f7-4f4b-82aa-fb666d73c87a",
+			"key": "url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
