@@ -35,5 +35,5 @@ steps:
 - script: |
     cd server/test/postman
     npm install -g newman
-    newman run pm-tests-skeleton.json -e pm-tests-skeleton-environment.json --reporter cli, junit --reporter-junit-export Results\junitReport.xml
+    newman run pm-tests-skeleton.json -e pm-tests-skeleton-environment.json --reporters cli, junit --reporter-junit-export Results\junitReport.xml
   displayName: 'Backend api tests: Run Postman tests'
