@@ -1,5 +1,4 @@
-import { JwtPayload } from './../../../../client/src/models/JwtPayload';
-import { ExtractJwt } from 'passport-jwt';
+import { JwtPayload } from './../../auth/interfaces/jwt-payload.interface';
 import { JwtService } from '@nestjs/jwt';
 import { createParamDecorator } from '@nestjs/common';
 import { Http2ServerRequest } from 'http2';
