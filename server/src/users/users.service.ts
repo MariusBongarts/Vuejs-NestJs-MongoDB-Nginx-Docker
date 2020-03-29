@@ -42,6 +42,10 @@ export class UsersService {
     return await this.authService.validateUserByPassword(createUserDto, true);
   }
 
+  async deleteAccount(userId: string) {
+    return await this.userModel.deleteOne({ _id: userId });
+  }
+
   async findOneByEmail(email) {
     const user = await this.userModel.findOne({ email: email });
     return user;
@@ -62,7 +66,7 @@ export class UsersService {
    */
   async updatePassword(updateUserDto: UpdatePasswordDto) {
     try {
-      const result = await this.authService.validateUserByPassword({email: updateUserDto.email, password: updateUserDto.oldPassword}, false);
+      const result = await this.authService.validateUserByPassword({ email: updateUserDto.email, password: updateUserDto.oldPassword }, false);
 
       if (result) {
         const user = await this.findOneByEmail(updateUserDto.email);
@@ -75,13 +79,13 @@ export class UsersService {
         return false;
       }
 
-    } catch(error) {
+    } catch (error) {
       this.logger.log(`FAIL: ${updateUserDto.email} failed updating password`);
     }
   }
 
   async sendForgotEmailPassword(email: string) {
-    //await this.mailService.sendForgotEmailPassword(email);
+    await this.mailService.sendForgotEmailPassword(email);
     this.logger.log(`Succeed: Reset password link sent to ${email}`);
   }
 
