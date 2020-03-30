@@ -45,6 +45,7 @@ module.exports = {
             browser.page.LandingPageAuthSignIn().signIn(constants_1.CONSTANTS.VALIDEMAIL, constants_1.CONSTANTS.VALIDPASSWORD);
             Toolbar = browser.page.Toolbar();
             Toolbar.waitForElementVisible('@container');
+            Toolbar.expect.element('@emailCaption').text.to.equal(constants_1.CONSTANTS.VALIDEMAIL);
             Toolbar.click('@avatar');
             Toolbar.click('@logoutBtn');
             LandingPage = browser.page.LandingPage();

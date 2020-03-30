@@ -1,11 +1,22 @@
 <template>
   <md-menu md-size="medium" md-align-trigger>
-    <md-avatar md-menu-trigger class="md-avatar-icon md-accent">
-      <md-ripple>{{getLetterForAvatar()}}</md-ripple>
-    </md-avatar>
-
+    <md-button md-menu-trigger class="menu-btn toolbar-btn">
+      <md-avatar class="md-avatar-icon md-accent">
+        <md-ripple>{{ getLetterForAvatar() }}</md-ripple>
+      </md-avatar>
+      <div class="account-info">
+        <span class="md-body-1">Admin Skeleton</span>
+        <br>
+        <span class="md-caption">{{ email }}</span>
+      </div>
+    </md-button>
     <md-menu-content>
-      <md-menu-item class="logout-btn" @click="logout">{{ $t('NavigationToolbarMenu.logout') }}</md-menu-item>
+      <md-menu-item class="profile" to="profile">{{
+        $t('NavigationToolbarMenu.profile')
+      }}</md-menu-item>
+      <md-menu-item class="logout-btn" @click="logout">{{
+        $t('NavigationToolbarMenu.logout')
+      }}</md-menu-item>
     </md-menu-content>
   </md-menu>
 </template>
@@ -18,6 +29,7 @@ import { AuthStore } from '../store/auth-store';
   components: {}
 })
 export default class NavigationToolbarMenu extends Vue {
+  private email = AuthStore.state.payload?.email;
 
   /**
    * Emits event to logout
@@ -33,11 +45,30 @@ export default class NavigationToolbarMenu extends Vue {
    * @method getLetterForAvatar
    */
   getLetterForAvatar() {
-    const email = AuthStore.state.payload?.email;
-    const firstLetter = email?.substring(0,1).toUpperCase();
+    const firstLetter = this.email?.substring(0, 1).toUpperCase();
     return firstLetter;
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.md-menu,
+.menu-btn {
+  display: flex;
+  height: 100%;
+}
+
+.account-info {
+  margin: 0px 15px;
+}
+
+
+::v-deep .md-button-content {
+  display: flex;
+}
+
+::v-deep .md-ripple {
+  height: 100% !important;
+}
+
+</style>

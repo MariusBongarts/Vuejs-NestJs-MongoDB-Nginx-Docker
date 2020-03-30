@@ -34,6 +34,12 @@ const routes = [
         // Lazy loading of component when route is visited
         component: () => import('../components/Company.vue'),
         name: 'company'
+      },
+      {
+        path: '/profile',
+        // Lazy loading of component when route is visited
+        component: () => import('../components/Profile.vue'),
+        name: 'profile'
       }
     ]
   },

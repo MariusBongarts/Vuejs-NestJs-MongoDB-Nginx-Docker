@@ -47,15 +47,16 @@ export default class NavigationToolbar extends Vue {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
+  margin: 0 !important;
 }
 
 .toolbar-sub-container {
-  display: flex;
-  margin: auto 20px !important;
   align-items: center;
-
+  display: flex;
   .md-title {
     margin: auto 20px !important;
   }
 }
+
 </style>

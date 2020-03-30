@@ -13,6 +13,7 @@
     "login": "Anmelden"
   },
   "NavigationToolbarMenu": {
+    "profile": "Benutzerprofil",
     "logout": "Ausloggen"
   },
   "LandingPageAuth": {
