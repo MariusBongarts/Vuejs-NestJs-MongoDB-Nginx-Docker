@@ -5,6 +5,9 @@ $primary: md-get-palette-color(blue, 400);
 $accent: md-get-palette-color(red, A200);
 $warn: #ff1744;
 
+// Height of the top toolbar
+$header-height: 55px;
+
 $primary-gradient: linear-gradient(90deg, lighten($primary, 10%) 0%,  $primary 50%, darken($primary, 10%)  100%);
 
 $mobile: 900px;

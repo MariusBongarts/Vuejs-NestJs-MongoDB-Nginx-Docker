@@ -23,6 +23,15 @@
     "ALREADYREGISTERED": "Already registered?",
     "NOTREGISTEREDYET": "Not registered yet?"
   },
+  "ProfilePage": {
+    "Settings": {
+      "language": {
+        "title": "Language",
+        "de": "German",
+        "en": "English"
+      }
+    }
+  },
   "ERRORS": {
     "HTTPERRORS": {
       "InvalidEmailOrPasswordException": "Invalid email or password!",

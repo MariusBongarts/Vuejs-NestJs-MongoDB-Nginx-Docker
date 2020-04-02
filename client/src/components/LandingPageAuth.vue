@@ -44,7 +44,7 @@ export default class LandingPageAuth extends Vue {
 .dialog-container {
   max-width: 100vw;
   overflow: scroll;
-  padding: 20px 0px;
+  padding: 20px 20px;
 }
 
 .dialog-container::-webkit-scrollbar {

@@ -23,6 +23,15 @@
     "ALREADYREGISTERED": "Bereits registriert?",
     "NOTREGISTEREDYET": "Noch kein Konto?"
   },
+  "ProfilePage": {
+    "Settings": {
+      "language": {
+        "title": "Sprache",
+        "de": "Deutsch",
+        "en": "Englisch"
+      }
+    }
+  },
   "ERRORS": {
     "HTTPERRORS": {
       "InvalidEmailOrPasswordException": "Ungültige E-Mail oder Passwort!",

@@ -1,11 +1,11 @@
 <template>
-  <md-menu md-size="medium" md-align-trigger>
+  <md-menu class="toolbar-menu" md-size="medium" md-align-trigger :md-offset-x="17">
     <md-button md-menu-trigger class="menu-btn toolbar-btn">
       <md-avatar class="md-avatar-icon md-accent">
         <md-ripple>{{ getLetterForAvatar() }}</md-ripple>
       </md-avatar>
       <div class="account-info">
-        <span class="md-body-1">Admin Skeleton</span>
+        <span class="md-body-1">{{ getName() }}</span>
         <br>
         <span class="md-caption">{{ email }}</span>
       </div>
@@ -48,10 +48,25 @@ export default class NavigationToolbarMenu extends Vue {
     const firstLetter = this.email?.substring(0, 1).toUpperCase();
     return firstLetter;
   }
+
+  /**
+   * Returns the value in front of @ in email
+   */
+  getName() {
+    return this.email?.split('@')[0] || '';
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+@import './src/theme/variables.scss';
+
+@media (max-width: $mobile) {
+  .account-info {
+    display: none;
+  }
+}
+
 .md-menu,
 .menu-btn {
   display: flex;
@@ -68,7 +83,14 @@ export default class NavigationToolbarMenu extends Vue {
 }
 
 ::v-deep .md-ripple {
-  height: 100% !important;
+  height: $header-height;
+}
+
+::v-deep .md-list {
+  padding: 0;
+  .md-list-item-content {
+    height: 40px;
+  }
 }
 
 </style>
