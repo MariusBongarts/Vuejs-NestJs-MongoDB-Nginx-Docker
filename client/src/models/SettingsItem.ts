@@ -1,4 +1,7 @@
 export interface SettingsItem {
-  component: 'language';
+  component: 'language' | 'password';
   title: string;
+  hasFooter: boolean;
+  icon: string;
+  successMsg: string;
 }

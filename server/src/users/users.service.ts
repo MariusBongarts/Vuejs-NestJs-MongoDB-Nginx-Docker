@@ -1,3 +1,4 @@
+import { OldPasswordIsIncorrectException } from './../exceptions/OldPasswordIncorrectException';
 import { EmailAlreadyRegisteredException } from './../exceptions/EmailAlreadyRegisteredException';
 import { UpdatePasswordDto } from './dto/update-password.dto';
 import { MailService } from './../mail/mail.service';
@@ -72,15 +73,15 @@ export class UsersService {
         const user = await this.findOneByEmail(updateUserDto.email);
         user['password'] = updateUserDto.newPassword;
         this.logger.log(`SUCCEED: ${updateUserDto.email} successfully updated password`);
-        await user.save();
-        return true;
+        return await user.save();
       } else {
         this.logger.log(`FAIL: ${updateUserDto.email} failed updating password`);
-        return false;
+        throw new OldPasswordIsIncorrectException();
       }
 
     } catch (error) {
       this.logger.log(`FAIL: ${updateUserDto.email} failed updating password`);
+      throw new OldPasswordIsIncorrectException();
     }
   }
 

@@ -2,15 +2,22 @@
   <md-card class="settings">
     <md-card-header>
       <md-card-header-text>
-        <div class="md-title">{{ $t(settingItem.title) }}</div>
+        <div class="md-subheading">
+          <md-icon>{{ settingItem.icon }}</md-icon
+          >{{ $t(settingItem.title) }}
+        </div>
       </md-card-header-text>
     </md-card-header>
+    <md-divider></md-divider>
     <md-card-content>
-      <component :is="'profile-settings-' + settingItem.component"></component>
+      <component
+        @success="$emit('success')"
+        @error="$emit('error')"
+        :is="'profile-settings-' + settingItem.component"
+        :settingItem="settingItem"
+      ></component>
     </md-card-content>
-    <md-card-actions>
-      <md-button class="md-primary">Save</md-button>
-    </md-card-actions>
+    <md-divider v-if="settingItem.hasFooter"></md-divider>
   </md-card>
 </template>
 
@@ -18,6 +25,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { MdCard } from 'vue-material/dist/components';
 import ProfileSettingsLanguage from './ProfileSettingsLanguage.vue';
+import ProfileSettingsPassword from './ProfileSettingsPassword.vue';
 import { SettingsItem } from '../models/SettingsItem';
 
 // Vue Material needed in this component
@@ -25,12 +33,37 @@ Vue.use(MdCard);
 
 @Component({
   components: {
-    ProfileSettingsLanguage
-  }
+    ProfileSettingsLanguage,
+    ProfileSettingsPassword,
+  },
 })
 export default class ProfileSettingsContainer extends Vue {
   @Prop() settingItem!: SettingsItem;
+
+  onSuccess() {
+    this.$emit('success');
+    console.log("ad")
+  }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.md-card-header-text {
+  flex: none;
+  .md-subheading {
+    text-align: left;
+    display: flex;
+    .md-icon {
+      margin-right: 10px;
+    }
+  }
+}
+
+.md-card-content {
+  padding: 10px 16px;
+}
+
+.md-card {
+  margin: 0;
+}
+</style>

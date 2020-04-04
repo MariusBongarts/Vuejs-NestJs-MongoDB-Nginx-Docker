@@ -31,8 +31,8 @@ import AuthService from '../services/AuthService';
   components: {
     NavigationSideToolbar,
     NavigationToolbar,
-    NavigationSideNavBar
-  }
+    NavigationSideNavBar,
+  },
 })
 export default class Navigation extends Vue {
   menuVisible = false;
@@ -83,11 +83,10 @@ export default class Navigation extends Vue {
 }
 
 .md-app {
-  height: 100%;
   border-radius: 8px;
+  height: 100%;
 }
 
-// Demo purposes only
 .md-drawer {
   width: 230px;
   max-width: calc(100vw - 125px);
@@ -95,5 +94,9 @@ export default class Navigation extends Vue {
 
 .page-container {
   height: 100vh;
+}
+
+.md-content {
+  padding: 0px;
 }
 </style>

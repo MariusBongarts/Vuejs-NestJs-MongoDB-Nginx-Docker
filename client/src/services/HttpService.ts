@@ -14,7 +14,7 @@ const httpClient = axios.create(config);
 
 /** Auth token interceptors */
 const authInterceptor = (config: AxiosRequestConfig) => {
-  config.headers.authorization = `Bearer ${AuthStore.state.jwt}`;
+  config.headers.Authorization = `Bearer ${AuthStore.state.jwt}`;
   return config;
 };
 

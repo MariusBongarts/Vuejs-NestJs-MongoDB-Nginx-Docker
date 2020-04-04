@@ -1,3 +1,4 @@
+import { ChangePasswordDto } from './../models/ChangePasswordDto';
 import { SignUpUserDto } from './../models/SignUpUserDto';
 import { LoginUserDto } from './../models/LoginUserDto';
 import router from '@/router/router';
@@ -48,5 +49,14 @@ export default class AuthService {
   async logout() {
     localStorage.jwtSkeleton = '';
     router.push({ path: '', name: 'landing' });
+  }
+
+  /**
+   * Changes the user´s password in the server
+   *
+   * @param changePasswordDto
+   */
+  async changePassword(changePasswordDto: ChangePasswordDto) {
+    return await httpClient.post('/users/change-password', changePasswordDto);
   }
 }

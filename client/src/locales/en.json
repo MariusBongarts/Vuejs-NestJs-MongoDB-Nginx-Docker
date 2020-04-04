@@ -1,5 +1,6 @@
 {
   "title": "Skeleton",
+  "save": "Save",
   "navigation": {
     "home": "Dashboard",
     "calendar": "Calendar",
@@ -27,8 +28,15 @@
     "Settings": {
       "language": {
         "title": "Language",
+        "successMsg": "Language was changed successfully",
         "de": "German",
         "en": "English"
+      },
+      "password": {
+        "title": "Change password",
+        "successMsg": "Password was changed successfully",
+        "oldPassword": "Old password",
+        "newPassword": "New password"
       }
     }
   },
@@ -44,6 +52,9 @@
       "isNotEmpty": "Please fill out all required fields!",
       "FIELDREQUIRED": "is required",
       "passwordsNotMatch": "Passwords do not match!"
+    },
+    "SNACKBAR": {
+      "CUSTOM": "Something went wrong"
     }
   }
 }

@@ -1,5 +1,6 @@
 {
   "title": "Skeleton",
+  "save": "Speichern",
   "navigation": {
     "home": "Dashboard",
     "calendar": "Kalendar",
@@ -27,8 +28,15 @@
     "Settings": {
       "language": {
         "title": "Sprache",
+        "successMsg": "Sprache wurde erfolgreich geändert",
         "de": "Deutsch",
         "en": "Englisch"
+      },
+      "password": {
+        "title": "Passwort ändern",
+        "successMsg": "Passwort wurde erfolgreich geändert",
+        "oldPassword": "Altes Passwort",
+        "newPassword": "Neues Passwort"
       }
     }
   },
@@ -42,7 +50,11 @@
     "CONSTRAINTS": {
       "isEmail": "Bitte gib eine korrekte Email ein!",
       "isNotEmpty": "Felder dürfen nicht leer sein!",
-      "passwordsNotMatch": "Passwörter stimmen nicht überein!"
+      "passwordsNotMatch": "Passwörter stimmen nicht überein!",
+      "FIELDREQUIRED": "muss ausgefüllt werden"
+    },
+    "SNACKBAR": {
+      "CUSTOM": "Etwas lief schief"
     }
   }
 }

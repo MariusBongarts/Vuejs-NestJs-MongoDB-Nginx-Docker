@@ -27,12 +27,10 @@ export class UsersController {
     @Post('/change-password')
     @UseGuards(AuthGuard())
     async changePassword(@Body() updatePasswordDto: UpdatePasswordDto) {
-        const result = await this.usersService.updatePassword(updatePasswordDto);
-
-        if (!result) {
-            throw new OldPasswordIsIncorrectException();
-        } else {
-            return 'Successfully changed password!';
+        try {
+            return await this.usersService.updatePassword(updatePasswordDto);
+        } catch (error) {
+            throw error;
         }
     }
 

@@ -29,6 +29,8 @@ import { AuthStore } from '../store/auth-store';
   components: {}
 })
 export default class NavigationToolbarMenu extends Vue {
+
+  /** Email of logged user in Vuex store */
   private email = AuthStore.state.payload?.email;
 
   /**

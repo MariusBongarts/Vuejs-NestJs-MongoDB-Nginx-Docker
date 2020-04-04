@@ -1,10 +1,13 @@
-<template>
+<template class="lng-settings">
   <div class="lng-settings">
     <md-field>
-      <label for="movie">Movie</label>
-      <md-select v-model="currentLanguage"
-      @md-selected="switchLanguage"
-       name="language" id="language">
+      <label for="language">{{ $t(settingItem.title) }}</label>
+      <md-select
+        v-model="currentLanguage"
+        @md-selected="switchLanguage"
+        name="language"
+        id="language"
+      >
         <md-option v-for="(lng, index) in languages" :key="index" :value="lng">{{
           $t('ProfilePage.Settings.language.' + lng)
         }}</md-option>
@@ -14,15 +17,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import { changeLanguage } from '../helper/i18n.service';
 import { Language } from '../models/Types';
+import { SettingsItem } from '../models/SettingsItem';
 
 @Component({
   name: 'profile-settings-language',
-  components: {}
+  components: {},
 })
 export default class ProfileSettingsLanguage extends Vue {
+  @Prop() settingItem!: SettingsItem;
+
   languages: Language[] = ['de', 'en'];
   currentLanguage = '';
 
@@ -32,6 +38,7 @@ export default class ProfileSettingsLanguage extends Vue {
 
   switchLanguage(lng: Language) {
     changeLanguage(lng);
+    this.$emit('success');
   }
 }
 </script>

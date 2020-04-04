@@ -16,7 +16,8 @@ module.exports = {
     'comma-dangle': 0,
     'linebreak-style': 'off',
     'no-unused-expressions': 0,
-    'no-shadow': 0
+    'no-shadow': 0,
+    'non-null-assertion': 0
   },
   overrides: [
     {
