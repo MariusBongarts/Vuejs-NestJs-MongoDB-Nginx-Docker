@@ -42,7 +42,6 @@ export default class ProfileSettingsContainer extends Vue {
 
   onSuccess() {
     this.$emit('success');
-    console.log("ad")
   }
 }
 </script>
