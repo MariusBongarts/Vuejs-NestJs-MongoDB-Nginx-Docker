@@ -28,7 +28,8 @@ export class UsersController {
     @UseGuards(AuthGuard())
     async changePassword(@Body() updatePasswordDto: UpdatePasswordDto) {
         try {
-            return await this.usersService.updatePassword(updatePasswordDto);
+            await this.usersService.updatePassword(updatePasswordDto);
+            return 'Successfully changed password!';
         } catch (error) {
             throw error;
         }

@@ -50,7 +50,7 @@ export default class Profile extends Vue {
       component: 'password',
       icon: 'lock',
       title: 'ProfilePage.Settings.password.title',
-      successMsg: 'ProfilePage.Settings.language.successMsg',
+      successMsg: 'ProfilePage.Settings.password.successMsg',
       hasFooter: false,
     },
   ];
