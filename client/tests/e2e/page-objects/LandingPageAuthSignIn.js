@@ -9,12 +9,13 @@
  *
  */
 const commands = {
-  signIn(email, password) {
+  signIn(email, password, success) {
     return this
       .navigate(this.url)
       .sendKeys('@emailInput', email)
       .sendKeys('@passwordInput', password)
-      .click('@signInBtn');
+      .click('@signInBtn')
+      .waitForElementVisible(success ? '@homeContainer' : '@container');
   }
 };
 
@@ -32,6 +33,7 @@ module.exports = {
     emailInvalid: '.md-error.invalid-email',
     passwordRequired: '.md-error.missing-password',
     passwordsNotMatch: '.md-error.not-match-password',
-    signUpBtn: '.sign-up-route-btn'
+    signUpBtn: '.sign-up-route-btn',
+    homeContainer: '.dashboard-container'
   }
 };

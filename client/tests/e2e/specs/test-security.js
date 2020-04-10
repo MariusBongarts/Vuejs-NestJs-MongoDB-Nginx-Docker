@@ -54,7 +54,7 @@ module.exports = {
         var NavBar, HomePage, LandingPage;
         return __generator(this, function (_a) {
             NavBar = browser.page.NavBar();
-            browser.page.LandingPageAuthSignIn().signIn(constants_1.CONSTANTS.VALIDEMAIL, constants_1.CONSTANTS.VALIDPASSWORD);
+            browser.page.LandingPageAuthSignIn().signIn(constants_1.CONSTANTS.VALIDEMAIL, constants_1.CONSTANTS.VALIDPASSWORD, true);
             // Wait for localStorage to be set from sign in
             browser.pause(1000);
             browser.execute(function () { return localStorage.clear(); });

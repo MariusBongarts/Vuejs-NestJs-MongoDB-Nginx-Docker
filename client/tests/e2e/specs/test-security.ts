@@ -14,7 +14,7 @@ module.exports = {
   },
   'it should redirect to landing page after deleting JSON Web Token from localstorage': async (browser: NightwatchBrowser) => {
     const NavBar = browser.page.NavBar() as EnhancedPageObject;
-    browser.page.LandingPageAuthSignIn().signIn(CONSTANTS.VALIDEMAIL, CONSTANTS.VALIDPASSWORD);
+    browser.page.LandingPageAuthSignIn().signIn(CONSTANTS.VALIDEMAIL, CONSTANTS.VALIDPASSWORD, true);
     // Wait for localStorage to be set from sign in
     browser.pause(1000);
     browser.execute(() => localStorage.clear());

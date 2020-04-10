@@ -13,7 +13,6 @@
 
     <!-- Snackbar to show either success or error toasts -->
     <md-snackbar
-      class="md-success"
       md-position="left"
       :md-duration="snackbarDuration"
       :md-active.sync="showSnackBar"

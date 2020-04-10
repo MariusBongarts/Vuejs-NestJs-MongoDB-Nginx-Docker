@@ -14,21 +14,21 @@ module.exports = {
     LandingPageAuthSignIn.waitForElementVisible('@overlay');
   },
   'it should sign in successfully': async (browser: NightwatchBrowser) => {
-    browser.page.LandingPageAuthSignIn().signIn(CONSTANTS.VALIDEMAIL, CONSTANTS.VALIDPASSWORD);
+    browser.page.LandingPageAuthSignIn().signIn(CONSTANTS.VALIDEMAIL, CONSTANTS.VALIDPASSWORD, true);
     const App = browser.page.App() as EnhancedPageObject;
     App.waitForElementVisible('@container');
     browser.end();
   },
   'it should fail sign in because of invalid password': async (browser: NightwatchBrowser) => {
     const LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn() as EnhancedPageObject;
-    browser.page.LandingPageAuthSignIn().signIn(CONSTANTS.VALIDEMAIL, CONSTANTS.INVALIDPASSWORD);
+    browser.page.LandingPageAuthSignIn().signIn(CONSTANTS.VALIDEMAIL, CONSTANTS.INVALIDPASSWORD, false);
     LandingPageAuthSignIn.waitForElementVisible('@errorMsg');
     LandingPageAuthSignIn.expect.element('@errorMsg').text.to.equal("Invalid email or password!");
     browser.end();
   },
   'it should fail sign in because of invalid email': async (browser) => {
     const LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn() as EnhancedPageObject;
-    browser.page.LandingPageAuthSignIn().signIn(CONSTANTS.INVALIDEMAIL, CONSTANTS.INVALIDPASSWORD);
+    browser.page.LandingPageAuthSignIn().signIn(CONSTANTS.INVALIDEMAIL, CONSTANTS.INVALIDPASSWORD, false);
     LandingPageAuthSignIn.waitForElementVisible('@errorMsg');
     LandingPageAuthSignIn.expect.element('@errorMsg').text.to.equal("Invalid email or password!");
     browser.end();

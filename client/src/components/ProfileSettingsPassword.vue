@@ -33,7 +33,7 @@
         v-model="passwordRepeat"
         type="password"
         name="passwordRepeat"
-        id="passwordRepeatSignUp"
+        id="passwordRepeat"
       ></md-input>
       <!-- Passwords do not match -->
       <span class="md-error not-match-password" v-if="!$v.passwordRepeat.sameAs">
@@ -47,7 +47,7 @@
     /></span>
 
     <md-card-actions>
-      <md-button class="md-primary" @click="validateCredentials">{{ $t('save') }}</md-button>
+      <md-button id="passwordSaveBtn" class="md-primary" @click="validateCredentials">{{ $t('save') }}</md-button>
     </md-card-actions>
 
     <!-- Loading spinner -->

@@ -49,6 +49,9 @@ export default class NavigationToolbar extends Vue {
   width: 100%;
   height: 100%;
   margin: 0 !important;
+  .md-icon-button {
+    margin: 5px;
+  }
 }
 
 .toolbar-sub-container {

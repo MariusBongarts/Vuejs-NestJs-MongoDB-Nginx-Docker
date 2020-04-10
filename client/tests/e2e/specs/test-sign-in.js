@@ -50,7 +50,7 @@ module.exports = {
     'it should sign in successfully': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
         var App;
         return __generator(this, function (_a) {
-            browser.page.LandingPageAuthSignIn().signIn(constants_1.CONSTANTS.VALIDEMAIL, constants_1.CONSTANTS.VALIDPASSWORD);
+            browser.page.LandingPageAuthSignIn().signIn(constants_1.CONSTANTS.VALIDEMAIL, constants_1.CONSTANTS.VALIDPASSWORD, true);
             App = browser.page.App();
             App.waitForElementVisible('@container');
             browser.end();
@@ -61,7 +61,7 @@ module.exports = {
         var LandingPageAuthSignIn;
         return __generator(this, function (_a) {
             LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn();
-            browser.page.LandingPageAuthSignIn().signIn(constants_1.CONSTANTS.VALIDEMAIL, constants_1.CONSTANTS.INVALIDPASSWORD);
+            browser.page.LandingPageAuthSignIn().signIn(constants_1.CONSTANTS.VALIDEMAIL, constants_1.CONSTANTS.INVALIDPASSWORD, false);
             LandingPageAuthSignIn.waitForElementVisible('@errorMsg');
             LandingPageAuthSignIn.expect.element('@errorMsg').text.to.equal("Invalid email or password!");
             browser.end();
@@ -72,7 +72,7 @@ module.exports = {
         var LandingPageAuthSignIn;
         return __generator(this, function (_a) {
             LandingPageAuthSignIn = browser.page.LandingPageAuthSignIn();
-            browser.page.LandingPageAuthSignIn().signIn(constants_1.CONSTANTS.INVALIDEMAIL, constants_1.CONSTANTS.INVALIDPASSWORD);
+            browser.page.LandingPageAuthSignIn().signIn(constants_1.CONSTANTS.INVALIDEMAIL, constants_1.CONSTANTS.INVALIDPASSWORD, false);
             LandingPageAuthSignIn.waitForElementVisible('@errorMsg');
             LandingPageAuthSignIn.expect.element('@errorMsg').text.to.equal("Invalid email or password!");
             browser.end();

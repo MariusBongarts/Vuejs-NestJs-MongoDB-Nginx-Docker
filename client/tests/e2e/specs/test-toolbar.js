@@ -39,10 +39,13 @@ exports.__esModule = true;
 var constants_1 = require("./constants/constants");
 module.exports = {
     beforeEach: function (browser) { return browser.init(); },
+    afterEach: function (browser) {
+        browser.end();
+    },
     'it should logout': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
         var Toolbar, LandingPage;
         return __generator(this, function (_a) {
-            browser.page.LandingPageAuthSignIn().signIn(constants_1.CONSTANTS.VALIDEMAIL, constants_1.CONSTANTS.VALIDPASSWORD);
+            browser.page.LandingPageAuthSignIn().signIn(constants_1.CONSTANTS.VALIDEMAIL, constants_1.CONSTANTS.VALIDPASSWORD, true);
             Toolbar = browser.page.Toolbar();
             Toolbar.waitForElementVisible('@container');
             Toolbar.expect.element('@emailCaption').text.to.equal(constants_1.CONSTANTS.VALIDEMAIL);
@@ -50,6 +53,19 @@ module.exports = {
             Toolbar.click('@logoutBtn');
             LandingPage = browser.page.LandingPage();
             LandingPage.waitForElementVisible('@getStartedBtn');
+            return [2 /*return*/];
+        });
+    }); },
+    'it should navigate to profile': function (browser) { return __awaiter(void 0, void 0, void 0, function () {
+        var Toolbar, ProfileSettingsContainer;
+        return __generator(this, function (_a) {
+            browser.page.LandingPageAuthSignIn().signIn(constants_1.CONSTANTS.VALIDEMAIL, constants_1.CONSTANTS.VALIDPASSWORD, true);
+            Toolbar = browser.page.Toolbar();
+            Toolbar.waitForElementVisible('@container');
+            Toolbar.click('@avatar');
+            Toolbar.click('@profileBtn');
+            ProfileSettingsContainer = browser.page.ProfileSettingsContainer();
+            ProfileSettingsContainer.waitForElementVisible('@container');
             return [2 /*return*/];
         });
     }); }
