@@ -25,6 +25,6 @@ module.exports = {
     avatar: '.menu-btn.toolbar-btn',
     logoutBtn: '.logout-btn',
     profileBtn: '.profile',
-    emailCaption: '.account-info md-caption'
+    emailCaption: '.md-caption'
   }
 };

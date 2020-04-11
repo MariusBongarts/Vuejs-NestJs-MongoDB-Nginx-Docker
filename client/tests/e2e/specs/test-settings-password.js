@@ -62,7 +62,6 @@ module.exports = {
         ProfileSettingsPassword.sendKeys('@newPassword', constants_1.CONSTANTS.NEWPASSWORDUSER);
         ProfileSettingsPassword.sendKeys('@passwordRepeat', constants_1.CONSTANTS.NEWPASSWORDUSER);
         ProfileSettingsPassword.click('@passwordSaveBtn');
-        browser.page.ProfileSettingsContainer().waitForElementVisible('@snackBarError');
         ProfileSettingsPassword.expect.element('@serverError').text.to.equal("Your old password is invalid!");
     }
 };
