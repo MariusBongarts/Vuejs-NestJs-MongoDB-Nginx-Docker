@@ -12,7 +12,7 @@ module.exports = {
     browser.page.LandingPageAuthSignIn().signIn(CONSTANTS.VALIDEMAIL, CONSTANTS.VALIDPASSWORD, true);
     const Toolbar = browser.page.Toolbar() as EnhancedPageObject;
     Toolbar.waitForElementVisible('@container');
-    Toolbar.expect.element('@emailCaption').text.to.equal(CONSTANTS.VALIDEMAIL);
+    Toolbar.expect.element('@emailCaption').text.to.equal(CONSTANTS.VALIDEMAIL.toLowerCase());
     Toolbar.click('@avatar');
     Toolbar.click('@logoutBtn');
     const LandingPage = browser.page.LandingPage() as EnhancedPageObject;

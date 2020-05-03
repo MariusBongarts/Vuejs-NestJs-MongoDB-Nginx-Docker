@@ -77,6 +77,9 @@ export default class NavigationToolbarMenu extends Vue {
 
 .account-info {
   margin: 0px 15px;
+  .md-caption {
+    text-transform: lowercase;
+  }
 }
 
 
